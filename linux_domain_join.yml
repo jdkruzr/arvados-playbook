@@ -1,6 +1,6 @@
 ---
 
-# This playbook joins a linux server (debian/ubunto) to an active directory domain.
+# This playbook joins machines to Broken.Works AD.
 
 - name: Apply common configuration
   hosts: domain_join
