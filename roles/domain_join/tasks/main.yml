@@ -9,7 +9,7 @@
 
 - name: Install pip
   apt: 
-    name: python-pip
+    name: python3-pip
     state: present
     update_cache: yes
 
@@ -20,7 +20,7 @@
 
 - name: Install AD Domain packages
   apt: 
-    name: {{ item }}
+    name: "{{ item }}"
     state: present 
     update_cache: yes
   with_items:
@@ -61,7 +61,7 @@
 
 - name: Discover realm debug
   debug: 
-    msg: {{ realm_discover_results.stdout }}
+    msg: "{{ realm_discover_results.stdout }}"
 
 - name: Create kerberos ticket
   expect:
@@ -78,7 +78,7 @@
 
 - name: Debug realm_list_results
   debug:
-    msg: {{ realm_list_results.stdout }}
+    msg: "{{ realm_list_results.stdout }}"
 
 - name: Join system to AD
   expect:
@@ -90,7 +90,10 @@
   become: true
   tags: ad
 
-- name: Copy suders file for safety
+#- name: Leave realm because this thing is annoying
+#  command: /bin/bash -c "/usr/sbin/realm leave"
+
+- name: Copy sudoers file for safety
   command: cp -f /etc/sudoers /etc/sudoers.tmp
 
 - name: Create sudoers file backup
@@ -108,8 +111,11 @@
     dest: /etc/sssd/sssd.conf
     owner: root
     group: root
-    mode: 0644
+    mode: 0600
   tags: ad
+
+#- name: Delete sssd.conf because this thing is too stupid to understand it's just a temporary file
+#  command: /bin/bash -c "/bin/rm -rf /etc/sssd/sssd.conf"
 
 - name: Copy pam common-session
   template: 
