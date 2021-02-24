@@ -1,0 +1,7 @@
+---
+# Adding Curii repos
+
+- name: Add specified repository into sources list
+  ansible.builtin.apt_repository:
+    repo: deb http://apt.arvados.org/focal focal main
+    state: present

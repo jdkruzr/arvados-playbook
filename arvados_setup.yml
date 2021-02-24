@@ -1,0 +1,10 @@
+---
+
+# This playbook starts the setup process for Arvados.
+
+- name: Add Arvados repos
+  hosts: domain_join
+  become: true
+
+  roles:
+    - repos
