@@ -2,6 +2,20 @@
 
 # This playbook starts the setup process for Arvados.
 
+- name: Install gnupg
+  hosts: domain_join
+  become: true
+  apt:
+    name: gnupg
+    state: present
+
+- name: Add key for Arvados repos
+  hosts: domain_join
+  become: true
+  ansible.builtin.apt_key:
+    keyserver: pool.sks-keyservers.net
+    id: 1078ECD7
+
 - name: Add Arvados repos
   hosts: domain_join
   become: true
