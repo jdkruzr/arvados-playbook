@@ -1,0 +1,14 @@
+---
+# Adding Curii repos
+
+- name: Creating a file with content
+  copy:
+    dest: "/etc/arvados/config.yml""
+    content: |
+      Clusters:                         # Clusters block, everything else is listed under this
+        bwarv:                          # Cluster ID, everything under it is configuration for this cluster
+          ExampleConfigKey: "fghijk"    # An example configuration key
+          ExampleConfigGroup:           # A group of keys
+            ExampleDurationConfig: 12s  # Example duration
+            ExampleSizeConfig: 99KiB    # Example with a size suffix
+      
