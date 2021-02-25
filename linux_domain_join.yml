@@ -3,14 +3,14 @@
 # This playbook joins machines to Broken.Works AD.
 
 - name: Apply common configuration
-  hosts: domain_join
+  hosts: arvados_hosts
   become: true
 
   roles:
     - common
 
 - name: Apply configuration to newly deployed machines
-  hosts: domain_join
+  hosts: arvados_hosts
   become: true
 
   roles:

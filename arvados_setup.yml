@@ -3,14 +3,14 @@
 # This playbook starts the setup process for Arvados.
 
 - name: Add Arvados repos
-  hosts: domain_join
+  hosts: arvados_hosts
   become: true
 
   roles:
     - repos
 
 - name: Add Arvados config
-  hosts: domain_join
+  hosts: arvados_hosts
   become: true
 
   roles:

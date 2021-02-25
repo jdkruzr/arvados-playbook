@@ -1,28 +1,15 @@
 ---
-# Adding Curii repos
+# Configuring Arvados
 
-#- name: Install gnupg
-#  apt:
-#    name: gnupg
-#    state: present
+- name: Create config directory for Arvados
+  ansible.builtin.file:
+    path: /etc/arvados
+    state: directory
+    mode: '0755'
 
-- name: Add key for Arvados repos
-  ansible.builtin.apt_key:
-    keyserver: pool.sks-keyservers.net
-    id: 1078ECD7
-
-#- name: Remove a Apt specific signing key, leading 0x is valid
-#  ansible.builtin.apt_key:
-#    id: 1078ECD7
-#    state: absent
-
-#- name: Remove file (delete file)
-#  ansible.builtin.file:
-#    path: /etc/apt/sources.list.d/apt_arvados_org_focal.list
-#    state: absent
-
-- name: Add specified repository into sources list
-  ansible.builtin.apt_repository:
-    repo: deb [trusted=yes] http://apt.arvados.org/focal focal main
-    state: present
-
+- name: Add Arvados config file
+  copy:
+      dest: "/etc/arvados/arvados.yml"
+      content: |
+        Clusters:
+          bwarv:
