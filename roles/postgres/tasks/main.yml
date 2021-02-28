@@ -1,0 +1,57 @@
+---
+# Installs and starts Postgres on container, creates user, db
+
+- name: "Install Postgres"
+  apt:
+    name: "postgresql"
+    state: present
+
+- name: "Install Postgres-contrib"
+  apt:
+    name: "postgresql-contrib"
+    state: present
+
+- name: "Install libpq-dev"
+  apt:
+    name: "libpq-dev"
+    state: present
+    
+- name: "Enable and start Postgres"
+  ansible.builtin.systemd:
+    name: 'postgresql'
+    enabled: yes
+    state: started
+
+- name: "Install psycopg2 for Ansible support"
+  pip:
+    name: 'psycopg2'
+
+- name: "Set up DB user for Arvados"
+  become: true
+  become_user: postgres
+  community.postgresql.postgresql_user:
+    name: 'arvados'
+    password: idontreallycaredou
+    role_attr_flags: NOSUPERUSER
+
+- name: "Set up DB for Arvados"
+  become: true
+  become_user: postgres
+  community.postgresql.postgresql_db:
+    name: 'arvados_production'
+    template: template0
+    encoding: UTF-8
+
+- name: "Establish ownership for db"
+  become: true
+  become_user: postgres
+  community.postgresql.postgresql_owner:
+    db: 'arvados_production'
+    new_owner: 'arvados'
+
+- name: Adds pgtrm extension
+  become: true
+  become_user: postgres
+  community.postgresql.postgresql_ext:
+    name: pg_trgm
+    db: arvados_production

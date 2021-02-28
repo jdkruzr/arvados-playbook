@@ -13,3 +13,24 @@
       content: |
         Clusters:
           bwarv:
+            SystemRootToken: "sy971y7fz2jSNUQzGkvfY76Ru6n8RLWLtXimH6X4c1IPXcRjtm"
+            ManagementToken: "4XiPWhaIehRxNmNyidCfFyS9mddqnKt8gkbL75vxFrm8upX2T0"
+            Collections:
+              BlobSigningKey: "MrGs82b5uVylbOPFfnpBKVGK40XzW6YSnRu0fdiRqfoTNwbjSn"
+            API:
+              RailsSessionSecretToken: "ldUW2znvL0GOiJT6KgQLc0FF54ISkApHjfTkdzsyYsutbJB5jV"
+            PostgreSQL:
+              Connection:
+                host: arvados-postgres
+                user: arvados
+                password: $postgres_password
+                dbname: arvados_production
+                Services:
+                  Controller:
+                  ExternalURL: "https://bwarv.broken.works"
+                  InternalURLs:
+                    "http://arvados-postgres:8003": {}
+                  RailsAPI:
+                  # Does not have an ExternalURL
+                  InternalURLs:
+                    "http://arvados-postgres:8004": {}

@@ -15,3 +15,11 @@
 
   roles:
     - config
+
+- name: Install Postgres
+  hosts: arvados-postgres
+  become: true
+
+  roles:
+    - postgres
+
