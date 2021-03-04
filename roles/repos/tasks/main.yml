@@ -1,15 +1,35 @@
 ---
-# Adding Curii repos
+# Adding repos
 
-#- name: Install gnupg
-#  apt:
-#    name: gnupg
-#    state: present
+- name: Install gnupg
+  apt:
+    name: gnupg
+    state: present
+
+- name: Install dirmngr
+  apt:
+    name: dirmngr
+    state: present
+
+- name: Install apt-https
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: Install ca-certificates
+  apt:
+    name: ca-certificates
+    state: present
 
 - name: Add key for Arvados repos
   ansible.builtin.apt_key:
     keyserver: pool.sks-keyservers.net
     id: 1078ECD7
+
+- name: Add key for Passenger
+  ansible.builtin.apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 561F9B9CAC40B2F7
 
 #- name: Remove a Apt specific signing key, leading 0x is valid
 #  ansible.builtin.apt_key:
@@ -21,8 +41,12 @@
 #    path: /etc/apt/sources.list.d/apt_arvados_org_focal.list
 #    state: absent
 
-- name: Add specified repository into sources list
+- name: Add Arvados repo
   ansible.builtin.apt_repository:
     repo: deb [trusted=yes] http://apt.arvados.org/focal focal main
     state: present
+
+- name: Add Passenger repo
+  ansible.builtin.apt_repository:
+    repo: deb [trusted=yes] https://oss-binaries.phusionpassenger.com/apt/passenger focal main
 
