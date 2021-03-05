@@ -1,6 +1,6 @@
 ---
 
-# This playbook starts the setup process for Arvados.
+# This playbook runs the setup process for Arvados on a total of eight hosts.
 
 - name: Add Arvados repos
   hosts: arvados_hosts
@@ -22,4 +22,10 @@
 
   roles:
     - postgres
+    
+- name: Setup API / controller
+  hosts: arvados-api
+  become: true
 
+  roles:
+    - arvados-api
