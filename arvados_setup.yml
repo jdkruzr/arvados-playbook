@@ -2,6 +2,16 @@
 
 # This playbook runs the setup process for Arvados on a total of eight hosts.
 
+- name: Update and upgrade packages
+  hosts: arvados_hosts
+  become: true
+
+  tasks:
+  - name: Update and upgrade
+    apt:
+      update_cache: yes
+      upgrade: dist
+
 - name: Add Arvados repos
   hosts: arvados_hosts
   become: true
