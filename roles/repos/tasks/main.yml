@@ -50,3 +50,6 @@
   ansible.builtin.apt_repository:
     repo: deb [trusted=yes] https://oss-binaries.phusionpassenger.com/apt/passenger focal main
 
+- name: "apt update to be sure we have packages available"
+  apt:
+    update_cache: yes
