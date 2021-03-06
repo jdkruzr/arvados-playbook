@@ -43,7 +43,7 @@
 
 - name: Add Arvados repo
   ansible.builtin.apt_repository:
-    repo: deb [trusted=yes] http://apt.arvados.org/focal focal main
+    repo: deb [trusted=yes] http://apt.arvados.org/focal focal-dev main
     state: present
 
 - name: Add Passenger repo
