@@ -47,6 +47,13 @@
   roles:
     - arvados-keep0
 
+- name: Setup Keepproxy
+  hosts: arvados-keep
+  become: true
+
+  roles:
+    - arvados-keep
+
 - name: Restart API / controller software
   hosts: arvados-api
   become: true
