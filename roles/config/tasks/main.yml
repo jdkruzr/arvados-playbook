@@ -23,7 +23,7 @@
               Connection:
                 host: arvados-postgres
                 user: arvados
-                password: $postgres_password
+                password: idontreallycaredou
                 dbname: arvados_production
                 Services:
                   Controller:
