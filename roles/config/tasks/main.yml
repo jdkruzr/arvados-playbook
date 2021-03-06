@@ -34,3 +34,28 @@
               # Does not have an ExternalURL
                 InternalURLs:
                   "http://localhost:8004": {}
+              Keepstore:
+                # No ExternalURL because they are only accessed by the internal subnet.
+                InternalURLs:
+                  "http://arvados-keep0:25107": {}
+            Volumes:
+              ClusterID-bwarv-000000000000000:
+                AccessViaHosts:
+                  "http://arvados-keep0": {}
+                Driver: Directory
+                DriverParameters:
+                  # The directory that will be used as the backing store.
+                  Root: /mnt/arvadosdata
+
+                # How much replication is performed by the underlying
+                # filesystem.  (for example, a network filesystem may provide
+                # its own replication).  This is used to inform replication
+                # decisions at the Keep layer.
+                Replication: 2
+
+                # If true, do not accept write or trash operations, only
+                # reads.
+                ReadOnly: false
+
+                # Storage classes to associate with this volume.
+                StorageClasses: null

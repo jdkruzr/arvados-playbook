@@ -1,0 +1,10 @@
+- name: "Install Keepstore"
+  apt:
+    name: "keepstore"
+    state: present
+
+- name: "Enable and start Keepstore"
+  ansible.builtin.systemd:
+    name: 'keepstore'
+    enabled: yes
+    state: started

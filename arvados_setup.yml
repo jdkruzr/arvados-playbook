@@ -29,3 +29,28 @@
 
   roles:
     - arvados-api
+
+- name: Setup Keepstore 0
+  hosts: arvados-keep0
+  become: true
+
+  roles:
+    - arvados-keep0
+
+- name: Restart API / controller software
+  hosts: arvados-api
+  become: true
+
+  tasks:
+  - name: Restart nginx
+    systemd:
+      name: nginx
+      state: restarted
+
+  - name: Restart arvados-controller
+    system:
+      name: arvados-controller
+      state: restarted
+
+
+    
