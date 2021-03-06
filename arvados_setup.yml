@@ -48,7 +48,7 @@
       state: restarted
 
   - name: Restart arvados-controller
-    system:
+    systemd:
       name: arvados-controller
       state: restarted
 
