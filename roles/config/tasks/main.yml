@@ -25,12 +25,12 @@
                 user: arvados
                 password: idontreallycaredou
                 dbname: arvados_production
-                Services:
-                  Controller:
-                    ExternalURL: "https://bwarv.broken.works"
-                    InternalURLs:
-                      "http://arvados-postgres:8003": {}
-                  RailsAPI:
-                  # Does not have an ExternalURL
-                    InternalURLs:
-                      "http://arvados-postgres:8004": {}
+            Services:
+              Controller:
+                ExternalURL: "https://bwarv.broken.works"
+                InternalURLs:
+                  "http://arvados-postgres:8003": {}
+              RailsAPI:
+              # Does not have an ExternalURL
+                InternalURLs:
+                  "http://arvados-postgres:8004": {}
