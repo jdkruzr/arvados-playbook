@@ -9,7 +9,7 @@
 
 - name: Add Arvados config file
   copy:
-      dest: "/etc/arvados/arvados.yml"
+      dest: "/etc/arvados/config.yml"
       content: |
         Clusters:
           bwarv:
