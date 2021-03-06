@@ -41,7 +41,7 @@
             Volumes:
               ClusterID-bwarv-000000000000000:
                 AccessViaHosts:
-                  "http://arvados-keep0": {}
+                  "http://arvados-keep0:25107": {}
                 Driver: Directory
                 DriverParameters:
                   # The directory that will be used as the backing store.
