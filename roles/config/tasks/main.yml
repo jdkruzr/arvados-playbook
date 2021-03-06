@@ -32,5 +32,5 @@
                       "http://arvados-postgres:8003": {}
                   RailsAPI:
                   # Does not have an ExternalURL
-                  InternalURLs:
-                    "http://arvados-postgres:8004": {}
+                    InternalURLs:
+                      "http://arvados-postgres:8004": {}
