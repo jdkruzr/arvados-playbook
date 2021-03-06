@@ -29,11 +29,11 @@
               Controller:
                 ExternalURL: "https://bwarv.broken.works"
                 InternalURLs:
-                  "http://localhost:8003": {}
+                  "http://arvados-api:8003": {}
               RailsAPI:
               # Does not have an ExternalURL
                 InternalURLs:
-                  "http://localhost:8004": {}
+                  "http://arvados-api:8004": {}
               Keepstore:
                 # No ExternalURL because they are only accessed by the internal subnet.
                 InternalURLs:
@@ -41,7 +41,7 @@
               Keepproxy:
                 ExternalURL: https://keep.bwarv.example.com
                 InternalURLs:
-                  "http://localhost:25107": {}
+                  "http://arvados-keep:25107": {}
             Volumes:
               ClusterID-bwarv-000000000000000:
                 AccessViaHosts:
