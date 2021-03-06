@@ -1,0 +1,10 @@
+- name: "Install Keepproxy"
+  apt:
+    name: "keepproxy"
+    state: present
+
+- name: "Enable and start Keepproxy"
+  ansible.builtin.systemd:
+    name: 'keepproxy'
+    enabled: yes
+    state: started

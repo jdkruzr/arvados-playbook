@@ -38,6 +38,10 @@
                 # No ExternalURL because they are only accessed by the internal subnet.
                 InternalURLs:
                   "http://arvados-keep0:25107": {}
+              Keepproxy:
+                ExternalURL: https://keep.bwarv.example.com
+                InternalURLs:
+                  "http://localhost:25107": {}
             Volumes:
               ClusterID-bwarv-000000000000000:
                 AccessViaHosts:
