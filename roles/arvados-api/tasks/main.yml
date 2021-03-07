@@ -69,7 +69,8 @@
       upstream controller {
         server     localhost:8003  fail_timeout=10s;
       }
-
+      # ^-- This doesn't appear to have ever worked as designed? Like nginx had no idea what "controller" was.
+      
       server {
         # This configures the public https port that clients will actually connect to,
         # the request is reverse proxied to the upstream 'controller'
@@ -99,7 +100,7 @@
         # This configures the Arvados API server.  It is written using Ruby
         # on Rails and uses the Passenger application server.
 
-        listen localhost:8004;
+        listen 8004;
         server_name localhost-api;
 
         root /var/www/arvados-api/current/public;
