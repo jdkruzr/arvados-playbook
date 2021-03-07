@@ -76,7 +76,7 @@
         # the request is reverse proxied to the upstream 'controller'
 
         listen       10000;
-        server_name  bwarv.example.com;
+        server_name  arvados-api;
 
         # Refer to the comment about this setting in the passenger (arvados
         # api server) section of your Nginx configuration.
