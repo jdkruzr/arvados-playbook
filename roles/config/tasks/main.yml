@@ -36,9 +36,20 @@
                 user: arvados
                 password: idontreallycaredou
                 dbname: arvados_production
+            Login:
+              LDAP:
+                Enable: true
+                URL: ldap://pegasus.broken.wrx:389
+                SearchBindUser: CN=arvadosman,CN=Users,DC=broken,DC=wrx
+                SearchBindPassword: datasharingactivate1!
+                SearchBase: DC=broken,DC=wrx
+                StartTLS: false
+                SearchAttribute: sAMAccountName
+                EmailAttribute: sAMAccountName
+                UsernameAttribute: sAMAccountName
             Services:
               Controller:
-                ExternalURL: "https://bwarv.broken.works"
+                ExternalURL: "https://bwarv.broken.works/"
                 InternalURLs:
                   "http://arvados-api:8003": {}
               RailsAPI:
@@ -50,9 +61,15 @@
                 InternalURLs:
                   "http://arvados-keep0:25107": {}
               Keepproxy:
-                ExternalURL: https://keep.bwarv.broken.works
+                ExternalURL: https://keep.bwarv.broken.works/
                 InternalURLs:
                   "http://arvados-keep:25107": {}
+              WebDAVDownload:
+                ExternalURL: https://download.bwarv.broken.works/
+              WebDAV:
+                ExternalURL: https://*.collections.bwarv.broken.works/
+                InternalURLs:
+                  "https://arvados-keep:9002": {}
             Volumes:
               ClusterID-bwarv-000000000000000:
                 AccessViaHosts:

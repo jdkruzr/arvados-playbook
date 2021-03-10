@@ -36,6 +36,11 @@
     group: www-data
     state: link
 
+- name: "Install postgresql-client"
+  apt:
+    name: "postgresql-client"
+    state: present
+
 - name: "Add Arvados nginx config file"
   copy:
     dest: "/etc/nginx/conf.d/arvados-api-and-controller.conf"
