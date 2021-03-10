@@ -2,8 +2,6 @@
 arvados-api
 arvados-keep
 arvados-keep0
-arvados-collections
-arvados-download
 arvados-ws
 arvados-workbench
 arvados-workbench2
