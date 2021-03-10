@@ -50,6 +50,11 @@
     enabled: yes
     state: started
 
+- name: "Maybe restart Postgres for good measure"
+  ansible.builtin.systemd:
+    name: 'postgresql'
+    state: restarted
+
 - name: "Install psycopg2 for Ansible support"
   pip:
     name: 'psycopg2'
