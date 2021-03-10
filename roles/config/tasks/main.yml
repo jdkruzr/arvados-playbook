@@ -1,10 +1,16 @@
 ---
 # Configuring Arvados
 
+- name: Setup update-alternatives for Py2
+  shell: update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+
+- name: Setup update alternatives for Py3
+  shell: update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+
 - name: Force python3
   community.general.alternatives:
     name: python
-    path: /usr/bin/python3
+    path: /usr/bin/python3.6
 
 - name: Create config directory for Arvados
   ansible.builtin.file:
