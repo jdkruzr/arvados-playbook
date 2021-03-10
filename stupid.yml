@@ -3,25 +3,25 @@
   become: true
 
   tasks:
-- name: "Set up DB user for Arvados"
-  become: true
-  become_user: postgres
-  community.postgresql.postgresql_user:
-    name: 'arvados'
-    password: idontreallycaredou
-    role_attr_flags: NOSUPERUSER
+  - name: "Set up DB user for Arvados"
+    become: true
+    become_user: postgres
+    community.postgresql.postgresql_user:
+      name: 'arvados'
+      password: idontreallycaredou
+      role_attr_flags: NOSUPERUSER
 
-- name: "Set up DB for Arvados"
-  become: true
-  become_user: postgres
-  community.postgresql.postgresql_db:
-    name: 'arvados_production'
-    template: template0
-    encoding: UTF-8
+  - name: "Set up DB for Arvados"
+    become: true
+    become_user: postgres
+    community.postgresql.postgresql_db:
+      name: 'arvados_production'
+      template: template0
+      encoding: UTF-8
 
-- name: "Establish ownership for db"
-  become: true
-  become_user: postgres
-  community.postgresql.postgresql_owner:
-    db: 'arvados_production'
-    new_owner: 'arvados'
+  - name: "Establish ownership for db"
+    become: true
+    become_user: postgres
+    community.postgresql.postgresql_owner:
+      db: 'arvados_production'
+      new_owner: 'arvados'
