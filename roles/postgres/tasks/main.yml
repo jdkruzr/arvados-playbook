@@ -18,13 +18,13 @@
 
 - name: "Permit external connections in postgresql.conf"
   lineinfile:
-    path: /etc/postgresql/12/main/postgresql.conf
+    path: /etc/postgresql/10/main/postgresql.conf
     regexp: '^listen_addresses = '
     line: listen_addresses = '*'
 
 - name: "Permit external connections in pg_hba.conf"
   copy:
-      dest: /etc/postgresql/12/main/pg_hba.conf
+      dest: /etc/postgresql/10/main/pg_hba.conf
       content: |
         local   all             postgres                                peer
 
