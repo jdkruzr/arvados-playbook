@@ -11,3 +11,5 @@ arvados-postgres
 arvados-git
 arvados-composer
 
+[just_db]
+arvados-postgres
