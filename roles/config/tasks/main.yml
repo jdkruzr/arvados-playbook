@@ -47,6 +47,11 @@
                 SearchAttribute: sAMAccountName
                 EmailAttribute: sAMAccountName
                 UsernameAttribute: sAMAccountName
+            Users:
+              # The e-mail address of the user you would like to become marked as an admin
+              # user on their first login.
+              AutoAdminUserWithEmail: "jtd"
+              AnonymousUserToken: "NPJn5SoVqb426CTOJqotfAONIj5AhCKC2vQSK4Bj"
             Services:
               Controller:
                 ExternalURL: "https://bwarv.broken.works/"
