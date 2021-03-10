@@ -43,12 +43,12 @@
 
 - name: Add Arvados repo
   ansible.builtin.apt_repository:
-    repo: deb [trusted=yes] http://apt.arvados.org/focal focal-dev main
+    repo: deb [trusted=yes] http://apt.arvados.org/bionic bionic main
     state: present
 
 - name: Add Passenger repo
   ansible.builtin.apt_repository:
-    repo: deb [trusted=yes] https://oss-binaries.phusionpassenger.com/apt/passenger focal main
+    repo: deb [trusted=yes] https://oss-binaries.phusionpassenger.com/apt/passenger bionic main
 
 - name: "apt update to be sure we have packages available"
   apt:
