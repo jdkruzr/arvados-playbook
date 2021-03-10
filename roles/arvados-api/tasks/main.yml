@@ -139,11 +139,11 @@
 #     name: "arvados-controller"
 #     state: present
 
-- name: "Restart nginx again"
-  systemd:
-    name: nginx
-    daemon-reload: yes
-    state: restarted
+# - name: "Restart nginx again"
+#   systemd:
+#     name: nginx
+#     daemon-reload: yes
+#     state: restarted
 
 - name: "Restart controller"
   systemd:
