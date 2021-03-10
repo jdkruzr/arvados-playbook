@@ -50,7 +50,7 @@
                 InternalURLs:
                   "http://arvados-keep0:25107": {}
               Keepproxy:
-                ExternalURL: https://keep.bwarv.example.com
+                ExternalURL: https://keep.bwarv.broken.works
                 InternalURLs:
                   "http://arvados-keep:25107": {}
             Volumes:

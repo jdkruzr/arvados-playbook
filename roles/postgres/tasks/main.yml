@@ -64,7 +64,7 @@
   become_user: postgres
   shell: psql -c "create user arvados with encrypted password 'idontreallycaredou';"
 
-- name: "Establish ownership for db"
+- name: "Establish ownership and database"
   become: true
   become_user: postgres
   shell: createdb arvados_production -T template0 -E UTF8 -O arvados
