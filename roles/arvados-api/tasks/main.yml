@@ -75,8 +75,11 @@
         # This configures the public https port that clients will actually connect to,
         # the request is reverse proxied to the upstream 'controller'
 
-        listen       10000;
+        listen       443 ssl;
         server_name  arvados-api;
+
+        ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+        ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 
         # Refer to the comment about this setting in the passenger (arvados
         # api server) section of your Nginx configuration.
