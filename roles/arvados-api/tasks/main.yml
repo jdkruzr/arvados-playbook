@@ -129,15 +129,15 @@
     daemon-reload: yes
     state: restarted
 
-- name: "Install Arvados API server"
-  apt:
-    name: "arvados-api-server"
-    state: present
+# - name: "Install Arvados API server"
+#   apt:
+#     name: "arvados-api-server"
+#     state: present
 
-- name: "Install Arvados controller"
-  apt:
-    name: "arvados-controller"
-    state: present
+# - name: "Install Arvados controller"
+#   apt:
+#     name: "arvados-controller"
+#     state: present
 
 - name: "Restart nginx again"
   systemd:
