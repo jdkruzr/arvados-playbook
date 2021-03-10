@@ -8,3 +8,15 @@
     name: 'keepproxy'
     enabled: yes
     state: started
+
+- name: "Install Keep-web"
+  apt:
+    name: "keep-web"
+    state: present
+
+- name: "Enable and start Keep-web"
+  ansible.builtin.systemd:
+    name: 'keep-web'
+    enabled: yes
+    state: started
+
