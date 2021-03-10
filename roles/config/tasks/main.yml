@@ -1,6 +1,11 @@
 ---
 # Configuring Arvados
 
+- name: Force python3
+  community.general.alternatives:
+    name: python
+    path: /usr/bin/python3
+
 - name: Create config directory for Arvados
   ansible.builtin.file:
     path: /etc/arvados
