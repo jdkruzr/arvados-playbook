@@ -26,7 +26,7 @@
   copy:
       dest: /etc/postgresql/10/main/pg_hba.conf
       content: |
-        local   all             postgres                                md5
+      
 
         # TYPE  DATABASE        USER            ADDRESS                 METHOD
 
