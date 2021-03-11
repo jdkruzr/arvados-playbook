@@ -20,3 +20,13 @@
     enabled: yes
     state: started
 
+- name: "Install Keep-balance"
+  apt:
+    name: "keep-balance"
+    state: present
+
+- name: "Enable and start Keep-balance"
+  ansible.builtin.systemd:
+    name: 'keep-balance'
+    enabled: yes
+    state: started
