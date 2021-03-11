@@ -59,12 +59,16 @@
     name: 'psycopg2'
 
 - name: Create arvados user with appropriate settings
+  become: true
+  become_user: postgres
   community.postgresql.postgresql_user:
     name: arvados
     password: idontreallycaredou
     role_attr_flags: NOCREATEROLE,NOSUPERUSER
 
 - name: Create a new database with name "arvados_production" with owner "arvados" UTF-8 encoding and template0 template
+  become: true
+  become_user: postgres
   community.postgresql.postgresql_db:
     name: arvados_production
     encoding: UTF-8
