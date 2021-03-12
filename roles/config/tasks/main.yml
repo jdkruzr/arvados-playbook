@@ -42,15 +42,17 @@
                 URL: ldap://pegasus.broken.wrx:389
                 SearchBindUser: CN=arvadosman,CN=Users,DC=broken,DC=wrx
                 SearchBindPassword: datasharingactivate1!
-                SearchBase: DC=broken,DC=wrx
+                SearchBase: CN=Users,DC=broken,DC=wrx
                 StartTLS: false
+                StripDomain: "broken.wrx"
                 SearchAttribute: sAMAccountName
-                EmailAttribute: sAMAccountName
+                SearchFilter: "(objectClass=user)"
+                EmailAttribute: mail
                 UsernameAttribute: sAMAccountName
             Users:
               # The e-mail address of the user you would like to become marked as an admin
               # user on their first login.
-              AutoAdminUserWithEmail: "jtd"
+              AutoAdminUserWithEmail: "jtd@broken.wrx"
               AnonymousUserToken: "NPJn5SoVqb426CTOJqotfAONIj5AhCKC2vQSK4Bj"
             Services:
               Controller:
