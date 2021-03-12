@@ -104,3 +104,9 @@
     systemd:
       name: arvados-controller
       state: restarted
+
+- name: Install Crunch-Local
+  hosts: arvados-download
+  become: true
+
+  roles: arvados-compute

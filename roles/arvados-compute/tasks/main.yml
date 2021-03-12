@@ -1,0 +1,10 @@
+- name: "Install Crunch Local"
+  apt:
+    name: "crunch-dispatch-local"
+    state: present
+
+- name: "Enable and start Crunch Local"
+  ansible.builtin.systemd:
+    name: 'crunch-dispatch-local'
+    enabled: yes
+    state: started
