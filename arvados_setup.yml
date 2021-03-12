@@ -90,5 +90,17 @@
   roles:
     - arvados-workbench2
 
+- name: Restart API / controller software
+  hosts: arvados-api
+  become: true
 
-    
+  tasks:
+  - name: Restart nginx
+    systemd:
+      name: nginx
+      state: restarted
+
+  - name: Restart arvados-controller
+    systemd:
+      name: arvados-controller
+      state: restarted
