@@ -79,6 +79,12 @@
                 InternalURLs:
                   "https://arvados-ws:8005": {}
                 ExternalURL: wws://ws.bwarv.broken.works/websocket
+              Workbench1:
+                ExternalURL: "https://workbench.bwarv.broken.works"
+              Workbench2:
+                ExternalURL: "https://workbench2.bwarv.broken.works"
+            Workbench:
+              SecretKeyBase: 182vioyyiqclf3wqyjkuaelbda6u8afmwkjgho62zo5sgrqporn9v6n3t91jka7ckrcdryshtgvh90
             Volumes:
               ClusterID-bwarv-000000000000000:
                 AccessViaHosts:

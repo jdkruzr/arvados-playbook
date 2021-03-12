@@ -154,3 +154,11 @@
   systemd:
     name: arvados-controller
     state: restarted
+
+- name: "Workbench trusted-client setting"
+  become: true
+  become_user: www-data
+  shell: |
+    RAILS_ENV=production bundle exec rails runner 'include CurrentApiClient; act_as_system_user do ApiClient.create!(url_prefix: "https://workbench.bwarv.broken.works", is_trusted: true);  act_as_system_user do ApiClient.create!(url_prefix: "https://workbench2.bwarv.broken.works", is_trusted: true) end'
+  args:
+    chdir: /var/www/arvados-api/current

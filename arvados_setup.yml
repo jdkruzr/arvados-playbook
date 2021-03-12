@@ -69,5 +69,26 @@
       name: arvados-controller
       state: restarted
 
+- name: Install WS server
+  hosts: arvados-ws
+  become: true
+
+  roles:
+    - arvados-ws
+
+- name: Install Workbench
+  hosts: arvados-workbench
+  become: true
+
+  roles:
+    - arvados-workbench
+
+- name: Install Workbench2
+  hosts: arvados-workbench2
+  become: true
+
+  roles:
+    - arvados-workbench2
+
 
     

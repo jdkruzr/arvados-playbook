@@ -1,0 +1,10 @@
+- name: "Install Workbench"
+  apt:
+    name: "arvados-workbench"
+    state: present
+
+- name: "Enable and start Workbench"
+  ansible.builtin.systemd:
+    name: 'workbench'
+    enabled: yes
+    state: started
