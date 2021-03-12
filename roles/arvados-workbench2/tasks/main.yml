@@ -30,9 +30,3 @@
   apt:
     name: "arvados-workbench2"
     state: present
-
-- name: "Enable and start Workbench2"
-  ansible.builtin.systemd:
-    name: 'workbench2'
-    enabled: yes
-    state: started
