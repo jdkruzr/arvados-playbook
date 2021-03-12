@@ -38,7 +38,7 @@
                 dbname: arvados_production
             Login:
               PAM:
-                Enable: false
+                Enable: true
                 Service: other
             Users:
               # The e-mail address of the user you would like to become marked as an admin
