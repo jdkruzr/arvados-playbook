@@ -77,7 +77,7 @@
               Websocket:
                 InternalURLs:
                   "https://arvados-ws:8005": {}
-                ExternalURL: wws://ws.bwarv.broken.works/websocket
+                ExternalURL: wss://ws.bwarv.broken.works/websocket
               Workbench1:
                 ExternalURL: "https://workbench.bwarv.broken.works"
               Workbench2:

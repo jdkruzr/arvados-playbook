@@ -41,6 +41,11 @@
     name: "postgresql-client"
     state: present
 
+- name: "Install git"
+  apt:
+    name: "git"
+    state: present
+
 - name: "Add Arvados nginx config file"
   copy:
     dest: "/etc/nginx/conf.d/arvados-api-and-controller.conf"
