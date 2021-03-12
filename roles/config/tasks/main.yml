@@ -37,22 +37,13 @@
                 password: idontreallycaredou
                 dbname: arvados_production
             Login:
-              LDAP:
-                Enable: true
-                URL: ldap://pegasus.broken.wrx:389
-                SearchBindUser: CN=arvadosman,CN=Users,DC=broken,DC=wrx
-                SearchBindPassword: datasharingactivate1!
-                SearchBase: CN=Users,DC=broken,DC=wrx
-                StartTLS: false
-                StripDomain: "broken.wrx"
-                SearchAttribute: sAMAccountName
-                SearchFilter: "(objectClass=user)"
-                EmailAttribute: mail
-                UsernameAttribute: sAMAccountName
+              PAM:
+                Enable: false
+                Service: other
             Users:
               # The e-mail address of the user you would like to become marked as an admin
               # user on their first login.
-              AutoAdminUserWithEmail: "jtd@broken.wrx"
+              AutoAdminUserWithEmail: "jtd"
               AnonymousUserToken: "NPJn5SoVqb426CTOJqotfAONIj5AhCKC2vQSK4Bj"
             Services:
               Controller:
