@@ -1,14 +1,14 @@
-- name: "Install nginx on API host"
+- name: "Install nginx on Workbench host"
   apt:
     name: "nginx"
     state: present
 
-- name: "Install Ruby on API host"
+- name: "Install Ruby on Workbench host"
   apt:
     name: "ruby"
     state: present
 
-- name: "Install Ruby dev package on API host"
+- name: "Install Ruby dev package on Workbench host"
   apt:
     name: "ruby-dev"
     state: present
@@ -74,3 +74,9 @@
     name: 'workbench'
     enabled: yes
     state: started
+
+- name: "Restart nginx"
+  systemd:
+    name: nginx
+    daemon-reload: yes
+    state: restarted
