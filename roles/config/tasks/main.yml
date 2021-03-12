@@ -38,12 +38,18 @@
                 dbname: arvados_production
             Login:
               PAM:
-                Enable: true
+                Enable: false
                 Service: other
+              Google:
+                Enable: true
+                ClientID: 277214404478-p7clb7rii1mdg1vmp25apdsr4slefvn6.apps.googleusercontent.com
+                ClientSecret: a4xG___2XpyZjAh5e7yH0kuM
+                AuthenticationRequestParameters:
+                  prompt: select_account
             Users:
               # The e-mail address of the user you would like to become marked as an admin
               # user on their first login.
-              AutoAdminUserWithEmail: "jtd"
+              AutoAdminUserWithEmail: "jarett@reticulum.us"
               AnonymousUserToken: "NPJn5SoVqb426CTOJqotfAONIj5AhCKC2vQSK4Bj"
             Services:
               Controller:
