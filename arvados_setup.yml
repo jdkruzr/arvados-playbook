@@ -109,4 +109,7 @@
   hosts: arvados-download
   become: true
 
-  roles: arvados-compute
+  roles:
+    - arvados-compute
+
+  
