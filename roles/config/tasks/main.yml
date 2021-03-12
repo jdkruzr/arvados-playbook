@@ -75,6 +75,10 @@
                 ExternalURL: https://*.collections.bwarv.broken.works/
                 InternalURLs:
                   "https://arvados-keep:9002": {}
+              Websocket:
+                InternalURLs:
+                  "https://arvados-ws:8005": {}
+                ExternalURL: wws://ws.bwarv.broken.works/websocket
             Volumes:
               ClusterID-bwarv-000000000000000:
                 AccessViaHosts:
