@@ -211,7 +211,7 @@
 - name: gitolite setup
   become: true
   become_user: git
-  ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk .ssh/id_rsa.pub
+  ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk /var/lib/arvados/git/.ssh/id_rsa.pub
 
 - name: Checkout admin repo
   become: true
