@@ -232,9 +232,9 @@
     dest: /var/lib/arvados/git/.git/config
     content: |
       [core]
-	    repositoryformatversion = 0
-	    filemode = true
-	    bare = false
+      repositoryformatversion = 0
+      filemode = true
+      bare = false
 	    logallrefupdates = true
       [user]
 	    name = arvados
