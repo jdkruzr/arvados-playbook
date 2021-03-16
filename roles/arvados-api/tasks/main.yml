@@ -235,12 +235,12 @@
       repositoryformatversion = 0
       filemode = true
       bare = false
-	    logallrefupdates = true
+      logallrefupdates = true
       [user]
-	    name = arvados
-	    email = arvados
+      name = arvados
+      email = arvados
       [push]
-	    default = simple
+      default = simple
 
 # name: more gitolite setup
 #   become: true
