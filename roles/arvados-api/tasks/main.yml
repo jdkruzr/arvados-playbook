@@ -167,3 +167,23 @@
 #     RAILS_ENV=production bundle exec rails runner 'include CurrentApiClient; act_as_system_user do ApiClient.create!(url_prefix: "https://workbench.bwarv.broken.works", is_trusted: true);  act_as_system_user do ApiClient.create!(url_prefix: "https://workbench2.bwarv.broken.works", is_trusted: true) end'
 #   args:
 #     chdir: /var/www/arvados-api/current
+
+- name: Add git user with a bash shell, correct homedir
+  ansible.builtin.user:
+    name: git
+    shell: /bin/bash
+    home: /var/lib/arvados/git
+    state: present
+
+- name: Create git user homedir
+  ansible.builtin.file:
+    path: /var/lib/arvados/git
+    state: directory
+    mode: '0755'
+    owner: git
+    group: git
+
+- name: Generate keypair
+  community.crypto.openssh_keypair:
+    path: /var/lib/arvados/git/.ssh
+    
