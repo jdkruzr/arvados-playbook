@@ -97,13 +97,54 @@
                   # SecretAccessKey to an empty value.
                   AccessKeyID: AKIA4ABXVD73PL5LPWAC
                   SecretAccessKey: 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
-
+                  
                   SecurityGroupIDs:
                   - sg-0155dc56cafb08bc1
                   SubnetID: subnet-0c468c6752ca2f845
                   Region: us-east-1
                   EBSVolumeType: gp2
                   AdminUsername: arvados
+                    DispatchPrivateKey: |
+                      -----BEGIN RSA PRIVATE KEY-----
+                      MIIEpAIBAAKCAQEAnX7c9yI+MOuRDe5j04iHbCj3onKEFKsfTuKnDts0WuQi5Enb
+                      wRPtb77FxQPeBnPxsqgYAtGXAJm8HSszACxdBV0NukCZUmT4DtDMtYnBbTvmthrv
+                      RtAL4k6fpez+OkVcCRH857NVeqtl5Db/AQ//X+k/iSC6DmavOGDCi03v50XpzJLt
+                      iVHzxQ8+hK9gE4zSb2WOQ/bhG5/osvVSAmBeqvxhm7aKYwcyd/TYX+NP0Xc/xmyk
+                      7aKoWbvohhuq4Fnc1lLPvdpOOgT9p8KAU6On0TujXLCb7Hzxhv63Vq0ovIVCotlT
+                      YwQkqDjepfavxFeHXwWoU4KES7Sj3TyG24PHtQIDAQABAoIBAH90JwWoJIQaXqzT
+                      et244z7YeG5yFglT4mZIbcFMC7ZyYPo1+yzpH4EK9alWU9sNAU//UE8XpgfKYb2J
+                      NCCzxiONBorvtCRFqajzuHZBINNxYmeErJa1zqg50GDKxYIKl0yPzgcDze0Tv8VL
+                      7FnDxHqtm8kxPuBgoPQS+d0aGUciu7qHNU+Us/Lq+Nr/PE0h5WkXq+jtu17pUmWR
+                      sHvm2+NtPNrNVVWK9TODkLelryRvv8WzlTOA51gzvuA68TGp11tNZBrD4hEWCr1/
+                      LPWMs4fCn149zcIe0cpdWlcakNEuBvB1YF8i3h3pFIdZ62dB2Lsvg6+MpcfxA0bT
+                      VAU91AECgYEA0BaUb5sXNvA/aVAAM2Dr7tJSCk1AwfuQxn+CUm0v4OijG0UPAN2K
+                      ZDmNF4dItZHh9lbWw/8elG92+JpbgvhXMbid1zyVHkNPJjSfWQnDt9lHmZG8wU9o
+                      KKJOBk1piSAIUY2+0FtjfLMxYDkGLeISRsaQ4HZXVIEQU/vL/iT4nfUCgYEAwcIu
+                      rz+GMbPIHGIxI0EqilIUg7+Zd7SgyLwWxnGbzdsEuamvoF4oDRj2zXBA+3iuYsKw
+                      S/pIjtJ8lhUjLYqL+rw4Eoza2y3fKSlzOs4a0gocguLZiaNBwK6OQzs/TIgfwzIL
+                      UA4eXLE0lbBtW0g/WCBma9kmrnxHKAy76qhwqsECgYEAuTe/++9SJIaICtc4toLI
+                      vpTajWzh/UhMP0Lz3yZs/YZU2EsJ5b1MF5XablzubR9iv//fvilxMLJedT3/wn4G
+                      Lq2jYRf9qyhCZUFlrL0yRozSXHEKUA68KZ7+UEHLdFDc1qqSc6dE0JQ3mOxpAaI+
+                      nlzUS9dKOF+BByATHS4PVZkCgYAfTl22qR/olfDGTUM9PAFAmiSAaQvF4KR96o4P
+                      gDm5WCL6UKV01uHHw/nUlceaGhSrFmPf0s+4a9//a+jkKdeWKqUwshuGgHHnN7BL
+                      lxOUTlfu+fJGH9+23z1TNZZzqibfpg1X4QAc3/DsIrZ4okLB3XJPCKYMWT4yBWSz
+                      dIXHwQKBgQC8Me5i9hPTb/pqQH2ZU50n3QufSRnYQxJeiPuo5eHw6h+xWpgl3eXF
+                      CrdpoA6Wd7r/nFbOY9mH2Kmaf+2g8JdlLFq41ijZAJGuaTq2g0yjy0bf19tnM0vD
+                      QKNqm8XSEymKEFCMjl9CpYQ6L3KSpDJ2i5/XPXb6GRdo514K4kpITA==
+                      -----END RSA PRIVATE KEY-----
+            InstanceTypes:
+              x1md:
+                ProviderType: x1.medium
+                VCPUs: 8
+                RAM: 64GiB
+                IncludedScratch: 64GB
+                Price: 0.62
+              x1lg:
+                ProviderType: x1.large
+                VCPUs: 16
+                RAM: 128GiB
+                IncludedScratch: 128GB
+                Price: 1.23
             Workbench:
               SecretKeyBase: 182vioyyiqclf3wqyjkuaelbda6u8afmwkjgho62zo5sgrqporn9v6n3t91jka7ckrcdryshtgvh90
             Volumes:
