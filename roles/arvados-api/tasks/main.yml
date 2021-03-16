@@ -186,4 +186,38 @@
 - name: Generate keypair
   community.crypto.openssh_keypair:
     path: /var/lib/arvados/git/.ssh
+
+- name: Clone gitolite
+  become: true
+  become_user: git
+  ansible.builtin.git:
+    repo: 'https://github.com/sitaramc/gitolite'
+    dest: /var/lib/arvados/git
+    version: v3.6.11
+
+- name: Create bin directory
+  ansible.builtin.file:
+    path: /var/lib/arvados/git/bin
+    owner: git
+    group: git
+    state: directory
+    mode: '0755'
+
+- name: Install git executable
+  become: true
+  become_user: git
+    ansible.builtin.shell: /var/lib/arvados/git/gitolite/install -ln /var/lib/arvados/git/bin
+
+- name: gitolite setup
+  become: true
+  become_user: git
+    ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk .ssh/id_rsa.pub
+
+- name: Checkout admin repo
+  become: true
+  become_user: git
+  ansible.builtin.git:
+    repo: git@localhost:gitolite-admin
+    dest: /var/lib/arvados/git
+
     
