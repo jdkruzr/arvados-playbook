@@ -208,34 +208,34 @@
   become_user: git
   ansible.builtin.shell: /var/lib/arvados/git/gitolite/install -ln /var/lib/arvados/git/bin
 
-- name: gitolite setup
-  become: true
-  become_user: git
-  ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk /var/lib/arvados/git/.ssh/id_rsa.pub
+# - name: gitolite setup
+#   become: true
+#   become_user: git
+#   ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk /var/lib/arvados/git/.ssh/id_rsa.pub
 
-- name: Checkout admin repo
-  become: true
-  become_user: git
-  ansible.builtin.git:
-    repo: git@localhost:gitolite-admin
-    dest: /var/lib/arvados/git
+# - name: Checkout admin repo
+#   become: true
+#   become_user: git
+#   ansible.builtin.git:
+#     repo: git@localhost:gitolite-admin
+#     dest: /var/lib/arvados/git
 
-- name: more gitolite setup
-  become: true
-  become_user: git
-  copy:
-    dest: /var/lib/arvados/git/.git/config
-    content: |
-      [core]
-      repositoryformatversion = 0
-      filemode = true
-      bare = false
-      logallrefupdates = true
-      [user]
-      name = arvados
-      email = arvados
-      [push]
-      default = simple
+# - name: more gitolite setup
+#   become: true
+#   become_user: git
+#   copy:
+#     dest: /var/lib/arvados/git/.git/config
+#     content: |
+#       [core]
+#       repositoryformatversion = 0
+#       filemode = true
+#       bare = false
+#       logallrefupdates = true
+#       [user]
+#       name = arvados
+#       email = arvados
+#       [push]
+#       default = simple
 
 # name: more gitolite setup
 #   become: true
