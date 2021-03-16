@@ -220,11 +220,6 @@
     repo: git@localhost:gitolite-admin
     dest: /var/lib/arvados/git
 
-- name: gitolite setup
-  become: true
-  become_user: git
-  ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk .ssh/id_rsa.pub
-
 - name: more gitolite setup
   become: true
   become_user: git
