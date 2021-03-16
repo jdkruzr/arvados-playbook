@@ -133,17 +133,17 @@
                 QKNqm8XSEymKEFCMjl9CpYQ6L3KSpDJ2i5/XPXb6GRdo514K4kpITA==
                 -----END RSA PRIVATE KEY-----
             InstanceTypes:
-              x1md:
-                ProviderType: x1.medium
-                VCPUs: 8
-                RAM: 64GiB
+              t3xl:
+                ProviderType: t3.xlarge
+                VCPUs: 4
+                RAM: 16GiB
                 IncludedScratch: 64GB
                 Price: 0.62
-              x1lg:
-                ProviderType: x1.large
-                VCPUs: 16
-                RAM: 128GiB
-                IncludedScratch: 128GB
+              t32x:
+                ProviderType: t3.2xlarge
+                VCPUs: 8
+                RAM: 32GiB
+                IncludedScratch: 64GB
                 Price: 1.23
             Workbench:
               SecretKeyBase: 182vioyyiqclf3wqyjkuaelbda6u8afmwkjgho62zo5sgrqporn9v6n3t91jka7ckrcdryshtgvh90
