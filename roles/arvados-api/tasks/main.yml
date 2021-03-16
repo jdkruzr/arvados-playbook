@@ -208,6 +208,17 @@
   become_user: git
   ansible.builtin.shell: /var/lib/arvados/git/gitolite/install -ln /var/lib/arvados/git/bin
 
+- name: Install arvados-dispatch-cloud
+  apt:
+    name: arvados-dispatch-cloud
+    state: present
+
+- name: "Enable and start cloud dispatch"
+  ansible.builtin.systemd:
+    name: 'arvados-dispatch-cloud'
+    enabled: yes
+    state: restarted
+
 # - name: gitolite setup
 #   become: true
 #   become_user: git

@@ -82,6 +82,28 @@
                 ExternalURL: "https://workbench.bwarv.broken.works"
               Workbench2:
                 ExternalURL: "https://workbench2.bwarv.broken.works"
+              DispatchCloud:
+                InternalURLs:
+                  "http://arvados-api:9006": {}
+            Containers:
+              CloudVMs:
+                # BootProbeCommand is a shell command that succeeds when an instance is ready for service
+                BootProbeCommand: "sudo systemctl status docker"
+                ImageID: ami-0331931c80274939e
+                Driver: ec2
+                DriverParameters:
+                  # If you are not using an IAM role for authentication, specify access
+                  # credentials here. Otherwise, omit or set AccessKeyID and
+                  # SecretAccessKey to an empty value.
+                  AccessKeyID: AKIA4ABXVD73PL5LPWAC
+                  SecretAccessKey: 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
+
+                  SecurityGroupIDs:
+                  - sg-0155dc56cafb08bc1
+                  SubnetID: subnet-0c468c6752ca2f845
+                  Region: us-east-1
+                  EBSVolumeType: gp2
+                  AdminUsername: arvados
             Workbench:
               SecretKeyBase: 182vioyyiqclf3wqyjkuaelbda6u8afmwkjgho62zo5sgrqporn9v6n3t91jka7ckrcdryshtgvh90
             Volumes:
