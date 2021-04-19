@@ -1,2 +1,2 @@
 ## Description
-This is an example Ansible playbook that will join a Debian based linux server to an Active Directory domain.  Many thanks to [Wolfhaven](http://www.wolffhaven45.com/blog/linux/join_ubuntu_workstation_windows_domain/) for his blog on the topic.
+Installs Arvados 2.1 on Ubuntu-based systems. Includes an Active Directory domain joining playbook.
