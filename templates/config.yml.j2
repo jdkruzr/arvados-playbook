@@ -1,0 +1,146 @@
+Clusters:
+  {{ cluster_id }}:
+    SystemRootToken: "{{ system_root_token }}"
+    ManagementToken: "{{ management_token }}"
+    Collections:
+      BlobSigningKey: "{{ blob_signing_key }}"
+    API:
+      RailsSessionSecretToken: "{{ rails_session_secret_token }}"
+    PostgreSQL:
+      Connection:
+        host: "{{ postgres_host }}"
+        user: "{{ postgres_user }}"
+        password: "{{ postgres_password }}"
+        dbname: "{{ postgres_database_name }}"
+    Login:
+      PAM:
+        Enable: false
+        Service: other
+      Google:
+        Enable: true
+        ClientID: "{{ google_client_id }}"
+        ClientSecret: "{{ google_client_secret }}"
+        AuthenticationRequestParameters:
+          prompt: select_account
+    Users:
+      # The e-mail address of the user you would like to become marked as an admin
+      # user on their first login.
+      AutoAdminUserWithEmail: "{{ auto_admin_user_email }}"
+      AnonymousUserToken: "{{ anonymous_user_token }}"
+    Services:
+      Controller:
+        ExternalURL: "https://bwarv.broken.works/"
+        InternalURLs:
+          "http://arvados-api:8003": {}
+      RailsAPI:
+      # Does not have an ExternalURL
+        InternalURLs:
+          "http://arvados-api:8004": {}
+      Keepstore:
+        # No ExternalURL because they are only accessed by the internal subnet.
+        InternalURLs:
+          "http://arvados-keep0:25107": {}
+      Keepproxy:
+        ExternalURL: "https://keep.bwarv.broken.works/"
+        InternalURLs:
+          "http://arvados-keep:25107": {}
+      WebDAVDownload:
+        ExternalURL: https://download.bwarv.broken.works/
+      WebDAV:
+        ExternalURL: https://*.collections.bwarv.broken.works/
+        InternalURLs:
+          "https://arvados-keep:9002": {}
+      Websocket:
+        InternalURLs:
+          "https://arvados-ws:8005": {}
+        ExternalURL: wss://ws.bwarv.broken.works/websocket
+      Workbench1:
+        ExternalURL: "https://workbench.bwarv.broken.works"
+      Workbench2:
+        ExternalURL: "https://workbench2.bwarv.broken.works"
+      DispatchCloud:
+        InternalURLs:
+          "http://arvados-api:9006": {}
+    Containers:
+      CloudVMs:
+        # BootProbeCommand is a shell command that succeeds when an instance is ready for service
+        BootProbeCommand: "sudo systemctl status docker"
+        ImageID: ami-0331931c80274939e
+        Driver: ec2
+        DriverParameters:
+          # If you are not using an IAM role for authentication, specify access
+          # credentials here. Otherwise, omit or set AccessKeyID and
+          # SecretAccessKey to an empty value.
+          AccessKeyID: AKIA4ABXVD73PL5LPWAC
+          SecretAccessKey: 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
+          
+          SecurityGroupIDs:
+          - sg-0155dc56cafb08bc1
+          SubnetID: subnet-0c468c6752ca2f845
+          Region: us-east-1
+          EBSVolumeType: gp2
+          AdminUsername: arvados
+      DispatchPrivateKey: |
+        -----BEGIN RSA PRIVATE KEY-----
+        MIIEpAIBAAKCAQEAnX7c9yI+MOuRDe5j04iHbCj3onKEFKsfTuKnDts0WuQi5Enb
+        wRPtb77FxQPeBnPxsqgYAtGXAJm8HSszACxdBV0NukCZUmT4DtDMtYnBbTvmthrv
+        RtAL4k6fpez+OkVcCRH857NVeqtl5Db/AQ//X+k/iSC6DmavOGDCi03v50XpzJLt
+        iVHzxQ8+hK9gE4zSb2WOQ/bhG5/osvVSAmBeqvxhm7aKYwcyd/TYX+NP0Xc/xmyk
+        7aKoWbvohhuq4Fnc1lLPvdpOOgT9p8KAU6On0TujXLCb7Hzxhv63Vq0ovIVCotlT
+        YwQkqDjepfavxFeHXwWoU4KES7Sj3TyG24PHtQIDAQABAoIBAH90JwWoJIQaXqzT
+        et244z7YeG5yFglT4mZIbcFMC7ZyYPo1+yzpH4EK9alWU9sNAU//UE8XpgfKYb2J
+        NCCzxiONBorvtCRFqajzuHZBINNxYmeErJa1zqg50GDKxYIKl0yPzgcDze0Tv8VL
+        7FnDxHqtm8kxPuBgoPQS+d0aGUciu7qHNU+Us/Lq+Nr/PE0h5WkXq+jtu17pUmWR
+        sHvm2+NtPNrNVVWK9TODkLelryRvv8WzlTOA51gzvuA68TGp11tNZBrD4hEWCr1/
+        LPWMs4fCn149zcIe0cpdWlcakNEuBvB1YF8i3h3pFIdZ62dB2Lsvg6+MpcfxA0bT
+        VAU91AECgYEA0BaUb5sXNvA/aVAAM2Dr7tJSCk1AwfuQxn+CUm0v4OijG0UPAN2K
+        ZDmNF4dItZHh9lbWw/8elG92+JpbgvhXMbid1zyVHkNPJjSfWQnDt9lHmZG8wU9o
+        KKJOBk1piSAIUY2+0FtjfLMxYDkGLeISRsaQ4HZXVIEQU/vL/iT4nfUCgYEAwcIu
+        rz+GMbPIHGIxI0EqilIUg7+Zd7SgyLwWxnGbzdsEuamvoF4oDRj2zXBA+3iuYsKw
+        S/pIjtJ8lhUjLYqL+rw4Eoza2y3fKSlzOs4a0gocguLZiaNBwK6OQzs/TIgfwzIL
+        UA4eXLE0lbBtW0g/WCBma9kmrnxHKAy76qhwqsECgYEAuTe/++9SJIaICtc4toLI
+        vpTajWzh/UhMP0Lz3yZs/YZU2EsJ5b1MF5XablzubR9iv//fvilxMLJedT3/wn4G
+        Lq2jYRf9qyhCZUFlrL0yRozSXHEKUA68KZ7+UEHLdFDc1qqSc6dE0JQ3mOxpAaI+
+        nlzUS9dKOF+BByATHS4PVZkCgYAfTl22qR/olfDGTUM9PAFAmiSAaQvF4KR96o4P
+        gDm5WCL6UKV01uHHw/nUlceaGhSrFmPf0s+4a9//a+jkKdeWKqUwshuGgHHnN7BL
+        lxOUTlfu+fJGH9+23z1TNZZzqibfpg1X4QAc3/DsIrZ4okLB3XJPCKYMWT4yBWSz
+        dIXHwQKBgQC8Me5i9hPTb/pqQH2ZU50n3QufSRnYQxJeiPuo5eHw6h+xWpgl3eXF
+        CrdpoA6Wd7r/nFbOY9mH2Kmaf+2g8JdlLFq41ijZAJGuaTq2g0yjy0bf19tnM0vD
+        QKNqm8XSEymKEFCMjl9CpYQ6L3KSpDJ2i5/XPXb6GRdo514K4kpITA==
+        -----END RSA PRIVATE KEY-----
+    InstanceTypes:
+      t3xl:
+        ProviderType: t3.xlarge
+        VCPUs: 4
+        RAM: 16GiB
+        IncludedScratch: 64GB
+        Price: 0.62
+      t32x:
+        ProviderType: t3.2xlarge
+        VCPUs: 8
+        RAM: 32GiB
+        IncludedScratch: 64GB
+        Price: 1.23
+    Workbench:
+      SecretKeyBase: 182vioyyiqclf3wqyjkuaelbda6u8afmwkjgho62zo5sgrqporn9v6n3t91jka7ckrcdryshtgvh90
+    Volumes:
+      ClusterID-bwarv-000000000000000:
+        AccessViaHosts:
+          "http://arvados-keep0:25107": {}
+        Driver: Directory
+        DriverParameters:
+          # The directory that will be used as the backing store.
+          Root: /mnt/arvadosdata
+
+        # How much replication is performed by the underlying
+        # filesystem.  (for example, a network filesystem may provide
+        # its own replication).  This is used to inform replication
+        # decisions at the Keep layer.
+        Replication: 2
+
+        # If true, do not accept write or trash operations, only
+        # reads.
+        ReadOnly: false
+
+        # Storage classes to associate with this volume.
+        StorageClasses: null

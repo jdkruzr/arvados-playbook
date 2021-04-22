@@ -6,9 +6,6 @@ arvados-ws
 arvados-workbench
 arvados-workbench2
 arvados-postgres
-arvados-git
-arvados-composer
-arvados-download
 
 [just_db]
 arvados-postgres

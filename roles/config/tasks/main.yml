@@ -23,8 +23,8 @@
       dest: "/etc/arvados/config.yml"
       content: |
         Clusters:
-          bwarv:
-            SystemRootToken: "sy971y7fz2jSNUQzGkvfY76Ru6n8RLWLtXimH6X4c1IPXcRjtm"
+          {{ cluster_id }}:
+            SystemRootToken: {{system_root_token}}
             ManagementToken: "4XiPWhaIehRxNmNyidCfFyS9mddqnKt8gkbL75vxFrm8upX2T0"
             Collections:
               BlobSigningKey: "MrGs82b5uVylbOPFfnpBKVGK40XzW6YSnRu0fdiRqfoTNwbjSn"
