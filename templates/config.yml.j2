@@ -29,7 +29,7 @@ Clusters:
       AnonymousUserToken: "{{ anonymous_user_token }}"
     Services:
       Controller:
-        ExternalURL: "https://bwarv.broken.works/"
+        ExternalURL: "{{ controller_external_url }}"
         InternalURLs:
           "http://arvados-api:8003": {}
       RailsAPI:
