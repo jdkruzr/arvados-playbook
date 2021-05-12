@@ -47,6 +47,13 @@
   roles:
     - arvados-keep0
 
+- name: Setup Keepstore 1
+  hosts: arvados-keep1
+  become: true
+
+  roles:
+    - arvados-keep1
+
 - name: Setup Keepproxy, Keep-web, Keep-Balance
   hosts: arvados-keep
   become: true
