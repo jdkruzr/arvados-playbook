@@ -46,6 +46,15 @@
     name: "git"
     state: present
 
+- name: "Install ssl-cert"
+  apt:
+    name: "ssl-cert"
+    state: present
+
+- name: "Create snakeoil"
+  command: make-ssl-cert generate-default-snakeoil --force-overwrite
+
+
 - name: "Add Arvados nginx config file"
   copy:
     dest: "/etc/nginx/conf.d/arvados-api-and-controller.conf"
