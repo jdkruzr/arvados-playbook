@@ -9,9 +9,24 @@ postgres_host: "arvados-postgres"
 postgres_user: "arvados"
 postgres_password: "idontreallycaredou"
 postgres_database_name: "arvados_production"
-#google_client_id: "asdfjklsdjfhaklsdfhjk"
-#google_client_secret: "shjdfjksdfhjksdhf"
+
+# Google Auth is not implmented yet in this playbook.
+
+google_client_id: "asdfjklsdjfhaklsdfhjk"
+google_client_secret: "shjdfjksdfhjksdhf"
 auto_admin_user: "jarett@reticulum.us"
+
+# This configuration is for LDAP in the form of Microsoft Active Directory.
+# If you use another LDAP, you may need to change such things as the
+# search attribute.
+
+ldap_server: "ldap://pegasus.broken.wrx:389"
+ldap_search_attribute: "sAMAccountName"
+ldap_search_bind_user: "arvados"
+ldap_search_bind_password: "letsdosomescience1!"
+ldap_search_base: "CN=Users,DC=broken,DC=wrx"
+ldap_username_attribute: "sAMAccountName"
+
 controller_external_url: "https://bwarv.broken.works"
 controller_internal_url: "http://arvados-api.broken.wrx:8003"
 rails_internal_url: "http://bwarv.broken.wrx:8004"
