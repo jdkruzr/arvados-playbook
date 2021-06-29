@@ -1,61 +1,39 @@
-cluster_id: "awsac"
+cluster_id: "bwarv"
 system_root_token: "h2qzWmgPOgGy9nLnhlfJQo52rwI9BMP6"
 management_token: "ffx8StusQO4qlR3xUCesnLURgaBOFJUH"
 blob_signing_key: "JeeNMSywpFtq8spPErASfk4I93dtndSQ"
 rails_session_secret_token: "UuVhzMISLqSulNaHXaSGsLt6ZxF6JOE4"
-postgres_host: "database-1.cluster-c3mbobdxjcjj.us-east-1.rds.amazonaws.com"
+workbench_secret_key: "JeeNMSywpFtq8spPErASfk4I93dtndSQ"
+anonymous_user_token: "hk24SYd8OIhttBse9DvXjfrqPJj0UNnV"
+postgres_host: "arvados-postgres"
 postgres_user: "postgres"
 postgres_password: "ehh1701jqb"
 postgres_database_name: "arvados_production"
 #google_client_id: "asdfjklsdjfhaklsdfhjk"
 #google_client_secret: "shjdfjksdfhjksdhf"
 auto_admin_user: "jarett@reticulum.us"
-anonymous_user_token: "hk24SYd8OIhttBse9DvXjfrqPJj0UNnV"
-controller_external_url: "https://awsac.broken.works"
-controller_internal_url: "http://10.0.0.206:8003"
-rails_internal_url: "http://10.0.0.206:8004"
-keep_internal_url1: "http://172.31.171.108:25107"
-keep_internal_url2: "http://172.31.173.33:25107"
-keepproxy_external_url: "https://keep.awsac.broken.works"
-keepproxy_internal_url1: "http://172.31.171.108:25107"
-keepproxy_internal_url2: "http://172.31.173.33:25107"
-download_external_url: "https://download.awsac.broken.works"
-collections_external_url: "https://*.collections.awsac.broken.works"
-collections_internal_url1: "http://172.31.171.108:9002"
-collections_internal_url2: "http://172.31.173.33:9002"
-ws_internal_url: 
-
-            Services:
-              Controller:
-                ExternalURL: "https://bwarv.broken.works/"
-                InternalURLs:
-                  "http://arvados-api:8003": {}
-              RailsAPI:
-              # Does not have an ExternalURL
-                InternalURLs:
-                  "http://arvados-api:8004": {}
-              Keepstore:
-                # No ExternalURL because they are only accessed by the internal subnet.
-                InternalURLs:
-                  "http://arvados-keep0:25107": {}
-              Keepproxy:
-                ExternalURL: https://keep.bwarv.broken.works/
-                InternalURLs:
-                  "http://arvados-keep:25107": {}
-              WebDAVDownload:
-                ExternalURL: https://download.bwarv.broken.works/
-              WebDAV:
-                ExternalURL: https://*.collections.bwarv.broken.works/
-                InternalURLs:
-                  "https://arvados-keep:9002": {}
-              Websocket:
-                InternalURLs:
-                  "https://arvados-ws:8005": {}
-                ExternalURL: wss://ws.bwarv.broken.works/websocket
-              Workbench1:
-                ExternalURL: "https://workbench.bwarv.broken.works"
-              Workbench2:
-                ExternalURL: "https://workbench2.bwarv.broken.works"
-              DispatchCloud:
-                InternalURLs:
-                  "http://arvados-api:9006": {}
+controller_external_url: "https://bwarv.broken.works"
+controller_internal_url: "http://arvados-api.broken.wrx:8003"
+rails_internal_url: "http://bwarv.broken.wrx:8004"
+keep_internal_url1: "http://arvados-keep0.broken.wrx:25107"
+keep_internal_url2: "http://arvados-keep1.broken.wrx:25107"
+keep_directory: "/mnt/filesystem"
+keepproxy_external_url: "https://keep.bwarv.broken.works"
+keepproxy_internal_url1: "http://arvados-keep.broken.wrx:25107"
+keepproxy_internal_url2: "http://arvados-keep.broken.wrx:25107"
+download_external_url: "https://download.bwarv.broken.works"
+collections_external_url: "https://*.collections.bwarv.broken.works"
+collections_internal_url1: "http://arvados-keep0.broken.wrx:9002"
+collections_internal_url2: "http://arvados-keep1.broken.wrx:9002"
+ws_internal_url: "http://arvados-ws.broken.wrx:8005"
+ws_external_url: "wss://ws.bwarv.broken.works/websocket"
+workbench1_external_url: "https://workbench.bwarv.broken.works"
+workbench2_external_url: "https://workbench2.bwarv.broken.works"
+dispatch_cloud_internal_url: "http://arvados-api.broken.wrx:9006"
+cloud_image_id: "used_for_AWS_not_implemented_yet"
+cloud_access_key_id: "used_for_AWS_not_implemented_yet"
+cloud_secret_key: "used_for_AWS_not_implemented_yet"
+security_group_id: "used_for_AWS_not_implemented_yet"
+subnet_id: "used_for_AWS_not_implemented_yet"
+aws_region: "used_for_AWS_not_implemented_yet"
+cloud_dispatch_private_key: "used_for_AWS_not_implemented_yet"

@@ -99,11 +99,9 @@ Clusters:
     Workbench:
       SecretKeyBase: "{{ workbench_secret_key }}"
     Volumes:
-      btarv-nyw5e-000000000000000:
-        Driver: S3
+      {{ cluster_id }}-nyw5e-000000000000000:
+        Driver: Directory
         DriverParameters:
-          Bucket: "{{ s3_bucket_name }}"
-          AccessKey: "{{ s3_access_key }}"
-          SecretKey: "{{ s3_secret_key }}"
-          Region: "{{ s3_region }}"
+          # The directory that will be used as the backing store.
+          Root: "{{ keep_directory }}"
 
