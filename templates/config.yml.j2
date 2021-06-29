@@ -71,11 +71,11 @@ Clusters:
       Controller:
         ExternalURL: "{{ controller_external_url }}"
         InternalURLs:
-          "{{ rails_internal_url }}": {}
+          "{{ controller_internal_url }}": {}
       RailsAPI:
       # Does not have an ExternalURL
         InternalURLs:
-          "{{ controller_internal_url }}": {}
+          "{{ rails_internal_url }}": {}
       Keepstore:
         # No ExternalURL because they are only accessed by the internal subnet.
         InternalURLs:
