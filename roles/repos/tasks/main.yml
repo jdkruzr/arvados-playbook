@@ -23,7 +23,7 @@
 
 - name: Add key for Arvados repos
   ansible.builtin.apt_key:
-    keyserver: pool.sks-keyservers.net
+    keyserver: keyserver.ubuntu.com
     id: 1078ECD7
 
 - name: Add key for Passenger
