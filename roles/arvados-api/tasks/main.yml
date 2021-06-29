@@ -225,8 +225,8 @@
 - name: "Enable and start cloud dispatch"
   ansible.builtin.systemd:
     name: 'arvados-dispatch-cloud'
-    enabled: yes
-    state: restarted
+    enabled: no
+    state: stopped
 
 # - name: gitolite setup
 #   become: true
