@@ -29,7 +29,7 @@ ldap_username_attribute: "sAMAccountName"
 
 controller_external_url: "https://bwarv.broken.works"
 controller_internal_url: "http://arvados-api.broken.wrx:8003"
-rails_internal_url: "http://bwarv.broken.wrx:8004"
+rails_internal_url: "http://arvados-api.broken.wrx:8004"
 keep_internal_url1: "http://arvados-keep0.broken.wrx:25107"
 keep_internal_url2: "http://arvados-keep1.broken.wrx:25107"
 keep_directory: "/mnt/filesystem"
