@@ -2,7 +2,6 @@ cluster_id: "bwarv"
 system_root_token: "h2qzWmgPOgGy9nLnhlfJQo52rwI9BMP6"
 management_token: "ffx8StusQO4qlR3xUCesnLURgaBOFJUH"
 blob_signing_key: "JeeNMSywpFtq8spPErASfk4I93dtndSQ"
-rails_session_secret_token: "UuVhzMISLqSulNaHXaSGsLt6ZxF6JOE4"
 workbench_secret_key: "JeeNMSywpFtq8spPErASfk4I93dtndSQ"
 anonymous_user_token: "hk24SYd8OIhttBse9DvXjfrqPJj0UNnV"
 postgres_host: "arvados-postgres"
@@ -10,7 +9,7 @@ postgres_user: "arvados"
 postgres_password: "idontreallycaredou"
 postgres_database_name: "arvados_production"
 
-# Google Auth is not implmented yet in this playbook.
+# Google Auth is not implemented yet in this playbook.
 
 google_client_id: "asdfjklsdjfhaklsdfhjk"
 google_client_secret: "shjdfjksdfhjksdhf"
