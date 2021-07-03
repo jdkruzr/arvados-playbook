@@ -21,7 +21,7 @@ auto_admin_user: "jarett@reticulum.us"
 
 ldap_server: "ldap://pegasus.broken.wrx:389"
 ldap_search_attribute: "sAMAccountName"
-ldap_search_bind_user: "arvados"
+ldap_search_bind_user: "CN=arvados,CN=Users,DC=broken,DC=wrx"
 ldap_search_bind_password: "letsdosomescience1!"
 ldap_search_base: "CN=Users,DC=broken,DC=wrx"
 ldap_username_attribute: "sAMAccountName"
