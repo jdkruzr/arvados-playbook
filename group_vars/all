@@ -13,7 +13,7 @@ postgres_database_name: "arvados_production"
 
 google_client_id: "asdfjklsdjfhaklsdfhjk"
 google_client_secret: "shjdfjksdfhjksdhf"
-auto_admin_user: "jarett@reticulum.us"
+auto_admin_user: "jtd@broken.wrx"
 
 # This configuration is for LDAP in the form of Microsoft Active Directory.
 # If you use another LDAP, you may need to change such things as the
