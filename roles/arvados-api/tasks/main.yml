@@ -209,6 +209,11 @@
   become_user: git
   ansible.builtin.shell: /var/lib/arvados/git/gitolite/install -ln /var/lib/arvados/git/bin
 
+- name: Set git path info
+  become: true
+  become_user: git
+  ansible.builtin.shell: echo 'PATH=$HOME/bin:$PATH' > ~git/.profile
+
 - name: Install arvados-dispatch-cloud
   apt:
     name: arvados-dispatch-cloud
@@ -220,41 +225,42 @@
     enabled: no
     state: stopped
 
-# - name: gitolite setup
-#   become: true
-#   become_user: git
-#   ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk /var/lib/arvados/git/.ssh/id_rsa.pub
+- name: gitolite setup
+  become: true
+  become_user: git
+  ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk /var/lib/arvados/git/.ssh/id_rsa.pub
 
-# - name: Checkout admin repo
-#   become: true
-#   become_user: git
-#   ansible.builtin.git:
-#     repo: git@localhost:gitolite-admin
-#     dest: /var/lib/arvados/git
+ - name: Checkout admin repo
+   become: true
+   become_user: git
+   ansible.builtin.git:
+     repo: git@localhost:gitolite-admin
+     dest: /var/lib/arvados/git
 
-# - name: more gitolite setup
-#   become: true
-#   become_user: git
-#   copy:
-#     dest: /var/lib/arvados/git/.git/config
-#     content: |
-#       [core]
-#       repositoryformatversion = 0
-#       filemode = true
-#       bare = false
-#       logallrefupdates = true
-#       [user]
-#       name = arvados
-#       email = arvados
-#       [push]
-#       default = simple
+ - name: more gitolite setup
+   become: true
+   become_user: git
+   copy:
+     dest: /var/lib/arvados/git/.git/config
+     content: |
+       [core]
+       repositoryformatversion = 0
+       filemode = true
+       bare = false
+       logallrefupdates = true
+       [user]
+       name = arvados
+       email = arvados
+       [push]
+       default = simple
 
 # name: more gitolite setup
 #   become: true
 #   become_user: git
-#   copy:
-#     dest: 
-#     content: |
+#   blockinfile:
+#     insertbefore: BOF
+#     dest: ~git/.gitolite.rc
+#     block: |
 #       my $repo_aliases;
 #       my $aliases_src = "$ENV{HOME}/.gitolite/arvadosaliases.pl";
 #       if ($ENV{HOME} && (-e $aliases_src)) {
