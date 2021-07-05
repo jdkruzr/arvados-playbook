@@ -243,7 +243,7 @@
   become_user: git
   ansible.builtin.git:
     repo: git@localhost:gitolite-admin
-    dest: /var/lib/arvados/git
+    dest: /var/lib/arvados/git/gitolite-admin
 
 - name: more gitolite setup
   become: true
