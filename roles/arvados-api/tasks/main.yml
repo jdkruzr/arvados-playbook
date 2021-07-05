@@ -186,7 +186,7 @@
 
 - name: Generate keypair
   community.crypto.openssh_keypair:
-    path: /var/lib/arvados/git/.ssh
+    path: /var/lib/arvados/git/.ssh/id_rsa
 
 - name: Clone gitolite
   become: true
