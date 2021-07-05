@@ -193,6 +193,8 @@
     group: git
 
 - name: Generate keypair
+  become: true
+  become_user: git
   community.crypto.openssh_keypair:
     path: /var/lib/arvados/git/.ssh/id_rsa
 
