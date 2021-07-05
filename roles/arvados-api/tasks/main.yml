@@ -184,6 +184,14 @@
     owner: git
     group: git
 
+- name: Create git user keypair dir
+  ansible.builtin.file:
+    path: /var/lib/arvados/git/.ssh
+    state: directory
+    mode: '0755'
+    owner: git
+    group: git
+
 - name: Generate keypair
   community.crypto.openssh_keypair:
     path: /var/lib/arvados/git/.ssh/id_rsa
