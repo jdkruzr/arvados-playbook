@@ -238,6 +238,11 @@
   become_user: git
   ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk /var/lib/arvados/git/.ssh/id_rsa.pub
 
+- name: copy ssh id
+  become: true
+  become_user: git
+  ansible.builtin.shell: ssh -o stricthostkeychecking=no localhost cat .ssh/id_rsa.pub
+
 - name: Checkout admin repo
   become: true
   become_user: git
