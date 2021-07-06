@@ -1,0 +1,7 @@
+production:
+  gitolite_url: /var/lib/arvados/git/repositories/gitolite-admin.git
+  gitolite_tmp: /var/lib/arvados/git
+  arvados_api_host: {{ cluster_id }}.{{ external_domain }}
+  arvados_api_token: "{{ system_root_token }}"
+  arvados_api_host_insecure: true
+  gitolite_arvados_git_user_key: {{ git_keypair_return.public_key }}

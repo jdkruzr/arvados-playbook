@@ -197,6 +197,7 @@
   become_user: git
   community.crypto.openssh_keypair:
     path: /var/lib/arvados/git/.ssh/id_rsa
+  register: git_keypair_return
 
 - name: Clone gitolite
   become: true
@@ -235,15 +236,20 @@
     enabled: no
     state: stopped
 
+#- name: copy ssh id
+#  become: true
+#  become_user: git
+#  ansible.builtin.shell: ssh -o stricthostkeychecking=no localhost cat .ssh/id_rsa.pub
+
+- name: delete authorized_keys so gitolite can do it
+  become: true
+  become_user: git
+  ansible.builtin.shell: rm -rf ~/.ssh/authorized_keys
+
 - name: gitolite setup
   become: true
   become_user: git
   ansible.builtin.shell: /var/lib/arvados/git/bin/gitolite setup -pk /var/lib/arvados/git/.ssh/id_rsa.pub
-
-- name: copy ssh id
-  become: true
-  become_user: git
-  ansible.builtin.shell: ssh -o stricthostkeychecking=no localhost cat .ssh/id_rsa.pub
 
 - name: Checkout admin repo
   become: true
@@ -269,16 +275,57 @@
       [push]
       default = simple
 
-# name: more gitolite setup
-#   become: true
-#   become_user: git
-#   blockinfile:
-#     insertbefore: BOF
-#     dest: ~git/.gitolite.rc
-#     block: |
-#       my $repo_aliases;
-#       my $aliases_src = "$ENV{HOME}/.gitolite/arvadosaliases.pl";
-#       if ($ENV{HOME} && (-e $aliases_src)) {
-#         $repo_aliases = do $aliases_src;
-#       }
-#       $repo_aliases ||= {};
+- name: still more gitolite setup
+   become: true
+   become_user: git
+   copy:
+    dest: ~git/.gitolite.rc
+    content: |
+      my $repo_aliases;
+      my $aliases_src = "$ENV{HOME}/.gitolite/arvadosaliases.pl";
+      if ($ENV{HOME} && (-e $aliases_src)) {
+        $repo_aliases = do $aliases_src;
+      }
+      $repo_aliases ||= {};
+
+      %RC = (
+
+        REPO_ALIASES => $repo_aliases,
+        UMASK                           =>  022,
+        GIT_CONFIG_KEYS                 =>  '',
+        LOG_EXTRA                       =>  1,
+        ROLES => {
+            READERS                     =>  1,
+            WRITERS                     =>  1,
+        },
+
+        ENABLE => [
+                'help',
+                'desc',
+                'info',
+                'perms',
+                'writable',
+                'ssh-authkeys',
+                'git-config',
+                'daemon',
+                'gitweb',
+                'Alias',
+        ],
+
+      );
+
+      1;
+
+      # Local variables:
+      # mode: perl
+      # End:
+      # vim: set syn=perl:
+
+- name: even more gitolite setup
+  become: true
+  become_user: root
+  copy:
+    dest: /etc/cron.d/arvados-git-sync
+    content: |
+      */5 * * * * git cd /var/www/arvados-api/current && bundle exec script/arvados-git-sync.rb production
+
