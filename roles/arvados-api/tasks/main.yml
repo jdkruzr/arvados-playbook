@@ -276,9 +276,9 @@
       default = simple
 
 - name: still more gitolite setup
-   become: true
-   become_user: git
-   copy:
+  become: true
+  become_user: git
+  copy:
     dest: ~git/.gitolite.rc
     content: |
       my $repo_aliases;
