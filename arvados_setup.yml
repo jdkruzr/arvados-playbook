@@ -113,7 +113,7 @@
       state: restarted
 
 - name: Install Crunch-Local
-  hosts: arvados-download
+  hosts: arvados-crunch
   become: true
 
   roles:
