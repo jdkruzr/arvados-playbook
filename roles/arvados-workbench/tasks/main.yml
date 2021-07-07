@@ -53,7 +53,7 @@
 
         location /composer {
           root   /var/www/arvados-composer;
-          ndex  index.html;
+          index  index.html;
         }
 
         location /composer/composer.yml {
