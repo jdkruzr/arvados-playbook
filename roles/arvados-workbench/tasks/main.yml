@@ -50,6 +50,15 @@
         passenger_enabled on;
 
         client_max_body_size 1024m;
+
+        location /composer {
+          root   /var/www/arvados-composer;
+          ndex  index.html;
+        }
+
+        location /composer/composer.yml {
+          return 200 '{ "API_HOST": "bwarv.broken.wrx" }';
+        }
       }
 
 - name: "Install postgresql-client"
@@ -60,6 +69,11 @@
 - name: "Install Workbench"
   apt:
     name: "arvados-workbench"
+    state: present
+
+- name: "Install Composer"
+  apt:
+    name: "arvados-composer"
     state: present
 
 - name: "Restart nginx"
