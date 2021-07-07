@@ -13,9 +13,11 @@
         server_name  workbench2.bwarv.broken.works;
 
         index  index.html;
+        
         location /config.json {
           return 200 '{ "API_HOST": "bwarv.broken.works" }';
         }
+
         location / {
           root      /var/www/arvados-workbench2/workbench2;
           index     index.html;
