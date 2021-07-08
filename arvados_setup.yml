@@ -20,7 +20,7 @@
     - repos
 
 - name: Add Arvados config
-  hosts: arvados_hosts
+  hosts: arvados_hosts:!arvados-shell
   become: true
 
   roles:
@@ -118,5 +118,23 @@
 
   roles:
     - arvados-compute
+
+- name: Install shell node
+  hosts: arvados-shell 
+  become: true
+
+  roles:
+    - arvados-shell
+
+- name: Restart controller again
+  hosts: arvados-api
+  become: true
+
+  tasks:
+  - name: Restart
+    systemd:
+      name: arvados-controller
+      state: restarted
+
 
   

@@ -27,6 +27,7 @@ ldap_search_bind_password: "letsdosomescience1!"
 ldap_search_base: "CN=Users,DC=broken,DC=wrx"
 ldap_username_attribute: "sAMAccountName"
 
+controller_internal_address: "arvados-api.broken.wrx"
 controller_external_url: "https://bwarv.broken.works"
 controller_internal_url: "http://192.168.9.80:8003"
 rails_internal_url: "http://192.168.9.80:8004"

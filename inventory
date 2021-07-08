@@ -7,6 +7,7 @@ arvados-workbench
 arvados-workbench2
 arvados-postgres
 arvados-crunch
+arvados-shell
 
 [just_db]
 arvados-postgres
