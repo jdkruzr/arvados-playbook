@@ -9,6 +9,7 @@
       - ruby-dev
       - bundler
       - python3-arvados-cwl-runner
+      - python-arvados-fuse
     state: present
     update_cache: true
 
@@ -19,19 +20,15 @@
   command: git config --system 'credential.https://git.{{ cluster_id }}.{{ external_domain }}/.helper' '!cred(){ cat >/dev/null; if [ "$1" = get ]; then echo password=$ARVADOS_API_TOKEN; fi; };cred'
 
 - name: Install Ruby utils
-  community.general.gem:
-    name: arvados-cli
-    state: present
+  command: gem install arvados-cli
 
 # This should return the UUID of the VM ID in arv_output.stdout
 - name: Setup VM entry
-  command: ARVADOS_API_HOST=arvados-api API_HOST_INSECURE=true ARVADOS_API_TOKEN={{ system_root_token }} arv --format=uuid virtual_machine create --virtual-machine '{"hostname":"arvados-shell.{{ cluster_id }}.{{ external_domain }}"}'
+  command: ARVADOS_API_HOST=arvados-api ARVADOS_API_HOST_INSECURE=true ARVADOS_API_TOKEN={{ system_root_token }} arv --format=uuid virtual_machine create --virtual-machine '{"hostname":"arvados-shell.{{ cluster_id }}.{{ external_domain }}"}'
   register: arv_output
 
 - name: Install login sync
-  community.general.gem:
-    name: arvados-login-sync
-    state: present
+  command: gem install arvados-login-sync
 
 - name: Setup cron
   ansible.builtin.template:
