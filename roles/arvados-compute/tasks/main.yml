@@ -9,8 +9,6 @@
     dest: /etc/arvados/crunch-dispatch-local-credentials
     mode: 0600
 
-- name: "Change permissions on Crunch"
-
 - name: "Enable and start Crunch Local"
   ansible.builtin.systemd:
     name: 'crunch-dispatch-local'
