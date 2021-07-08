@@ -8,6 +8,7 @@
       - ruby
       - ruby-dev
       - bundler
+      - python3-arvados-cwl-runner
     state: present
     update_cache: true
 
@@ -27,7 +28,7 @@
   command: ARVADOS_API_HOST=arvados-api API_HOST_INSECURE=true ARVADOS_API_TOKEN={{ system_root_token }} arv --format=uuid virtual_machine create --virtual-machine '{"hostname":"arvados-shell.{{ cluster_id }}.{{ external_domain }}"}'
   register: arv_output
 
-- name: Install Ruby utils
+- name: Install login sync
   community.general.gem:
     name: arvados-login-sync
     state: present

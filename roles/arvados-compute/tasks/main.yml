@@ -7,7 +7,7 @@
   template:
     src: crunch-dispatch-local-credentials.j2
     dest: /etc/arvados/crunch-dispatch-local-credentials
-    mode: 0600
+    mode: 0644
 
 - name: "Enable and start Crunch Local"
   ansible.builtin.systemd:
