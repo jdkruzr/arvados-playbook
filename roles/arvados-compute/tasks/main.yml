@@ -3,8 +3,16 @@
     name: "crunch-dispatch-local"
     state: present
 
+- name: "Install Crunch config file"
+  template:
+    src: crunch-dispatch-local-credentials.j2
+    dest: /etc/arvados/crunch-dispatch-local-credentials
+    mode: 0600
+
+- name: "Change permissions on Crunch"
+
 - name: "Enable and start Crunch Local"
   ansible.builtin.systemd:
     name: 'crunch-dispatch-local'
     enabled: yes
-    state: started
+    state: restarted
