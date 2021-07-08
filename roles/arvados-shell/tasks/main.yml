@@ -37,4 +37,4 @@
 - name: Setup cron
   ansible.builtin.template:
       src: "arvados-login-sync.j2"
-      dest: "/etc/cron/arvados-login-sync"
+      dest: "/etc/cron.d/arvados-login-sync"
