@@ -26,9 +26,9 @@
 - name: Setup VM entry
   command: arv --format=uuid virtual_machine create --virtual-machine '{"hostname":"arvados-shell.{{ cluster_id }}.{{ external_domain }}"}'
   environment:
-    ARVADOS_API_HOST: {{ controller_internal_address }}
-    ARVADOS_API_HOST_INSECURE: true
-    ARVADOS_API_TOKEN: {{ system_root_token }}
+    ARVADOS_API_HOST: "{{ controller_internal_address }}"
+    ARVADOS_API_HOST_INSECURE: "true"
+    ARVADOS_API_TOKEN: "{{ system_root_token }}"
   register: arv_output
 
 - name: Install login sync
