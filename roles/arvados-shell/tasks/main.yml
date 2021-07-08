@@ -5,6 +5,9 @@
       - build-essential
       - libcurl4-openssl-dev
       - python3-arvados-python-client
+      - ruby
+      - ruby-dev
+      - bundler
     state: present
     update_cache: true
 
