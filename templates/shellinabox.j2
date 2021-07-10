@@ -1,5 +1,5 @@
 # TCP port that shellinaboxd's webserver listens on
 SHELLINABOX_PORT=4200
 
-# SSL is disabled because it is terminated in Nginx. Adjust as needed.
+# SSL is disabled because it is terminated at the border. Adjust as needed.
 SHELLINABOX_ARGS="--disable-ssl --no-beep --service=/shell.{{cluster_id}}.{{ external_domain }}:AUTH:HOME:SHELL"
