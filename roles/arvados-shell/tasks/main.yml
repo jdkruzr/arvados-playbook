@@ -24,7 +24,7 @@
 
 # This should return the UUID of the VM ID in arv_output.stdout
 - name: Setup VM entry
-  command: arv --format=uuid virtual_machine create --virtual-machine '{"hostname":"arvados-shell.{{ cluster_id }}.{{ external_domain }}"}'
+  command: arv --format=uuid virtual_machine create --virtual-machine '{"hostname":"arvados-shell.{{ internal_domain }}"}'
   environment:
     ARVADOS_API_HOST: "{{ controller_internal_address }}"
     ARVADOS_API_HOST_INSECURE: "true"

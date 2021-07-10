@@ -1,5 +1,6 @@
 cluster_id: "bwarv"
 external_domain: "broken.works"
+internal_domain: "broken.wrx"
 system_root_token: "h2qzWmgPOgGy9nLnhlfJQo52rwI9BMP6"
 management_token: "ffx8StusQO4qlR3xUCesnLURgaBOFJUH"
 blob_signing_key: "JeeNMSywpFtq8spPErASfk4I93dtndSQ"

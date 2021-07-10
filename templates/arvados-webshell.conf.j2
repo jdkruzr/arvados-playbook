@@ -2,18 +2,20 @@ upstream arvados-webshell {
   server                shell.{{ cluster_id }}.{{ external_domain }}:4200;
 }
 
+# This config file has been changed to serve plain http instead of https since we
+# terminate TLS on a proxy machine at the border.
 server {
-  listen                443 ssl;
+  listen                80;
   server_name           webshell.{{ cluster_id }}.{{ external_domain }};
 
   proxy_connect_timeout 90s;
   proxy_read_timeout    300s;
 
-  ssl                   on;
-  ssl_certificate       /YOUR/PATH/TO/cert.pem;
-  ssl_certificate_key   /YOUR/PATH/TO/cert.key;
+  # ssl                   on;
+  # ssl_certificate       /YOUR/PATH/TO/cert.pem;
+  # ssl_certificate_key   /YOUR/PATH/TO/cert.key;
 
-  location /shell.ClusterID {
+  location /shell.{{ cluster_id }} {
     if ($request_method = 'OPTIONS') {
        add_header 'Access-Control-Allow-Origin' '*';
        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';

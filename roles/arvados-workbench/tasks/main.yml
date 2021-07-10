@@ -76,6 +76,16 @@
     name: "arvados-composer"
     state: present
 
+- name: "Install shellinabox"
+  apt:
+    name: "shellinabox"
+    state: present
+
+- name: "Install PAM module for Arvados"
+  apt:
+    name: "libpam-arvados-go"
+    state: present
+
 - name: "Restart nginx"
   systemd:
     name: nginx
