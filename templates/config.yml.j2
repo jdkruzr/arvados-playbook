@@ -109,6 +109,9 @@ Clusters:
           "{{ http_git_internal_url }}": {}
       Composer:
         ExternalURL: "{{ composer_external_url }}"
+      WebShell:
+        InternalURLs: {}
+        ExternalURL: "{{ webshell_external_url }}"
     Git:
       GitCommand: /var/lib/arvados/git/gitolite/src/gitolite-shell
       GitoliteHome: /var/lib/arvados/git

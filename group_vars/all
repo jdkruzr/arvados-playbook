@@ -14,6 +14,8 @@ postgres_database_name: "arvados_production"
 
 google_client_id: "asdfjklsdjfhaklsdfhjk"
 google_client_secret: "shjdfjksdfhjksdhf"
+
+# Whatever user attempts to log in and has this email attribute will be made admin.
 auto_admin_user: "jtd@broken.wrx"
 
 # This configuration is for LDAP in the form of Microsoft Active Directory.
@@ -49,6 +51,7 @@ ssh_git_external_url: "ssh://git@git.bwarv.broken.works"
 http_git_external_url: "https://git.bwarv.broken.works"
 http_git_internal_url: "http://192.168.9.80:9001"
 composer_external_url: "https://workbench.bwarv.broken.works/composer"
+webshell_external_url: "https://webshell.bwarv.broken.wrx"
 dispatch_cloud_internal_url: "http://arvados-api.broken.wrx:9006"
 cloud_image_id: "used_for_AWS_not_implemented_yet"
 cloud_access_key_id: "used_for_AWS_not_implemented_yet"
