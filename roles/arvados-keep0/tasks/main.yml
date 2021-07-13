@@ -3,8 +3,8 @@
     name: "keepstore"
     state: present
 
-- name: "Enable and start Keepstore"
+- name: "Enable and restart Keepstore"
   ansible.builtin.systemd:
     name: 'keepstore'
     enabled: yes
-    state: started
+    state: restarted

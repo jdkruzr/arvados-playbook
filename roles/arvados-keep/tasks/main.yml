@@ -7,7 +7,7 @@
   ansible.builtin.systemd:
     name: 'keepproxy'
     enabled: yes
-    state: started
+    state: restarted
 
 - name: "Install Keep-web"
   apt:
@@ -18,7 +18,7 @@
   ansible.builtin.systemd:
     name: 'keep-web'
     enabled: yes
-    state: started
+    state: restarted
 
 - name: "Install Keep-balance"
   apt:
@@ -29,4 +29,4 @@
   ansible.builtin.systemd:
     name: 'keep-balance'
     enabled: yes
-    state: started
+    state: restarted
