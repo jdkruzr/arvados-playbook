@@ -66,6 +66,11 @@
     src: arvados-webshell.conf.j2
     dest: "/etc/nginx/conf.d/arvados-webshell.conf"
 
+- name: "Create /etc/defaults"
+  file:
+    path: /etc/defaults
+    state: directory
+    
 - name: "Install shellinabox config"
   template:
     src: shellinabox.j2
