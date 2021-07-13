@@ -1,5 +1,5 @@
 upstream arvados-webshell {
-  server                shell.{{ cluster_id }}.{{ external_domain }}:4200;
+  server                arvados-shell.{{ internal_domain }}:4200;
 }
 
 # This config file has been changed to serve plain http instead of https since we
