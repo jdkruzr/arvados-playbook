@@ -87,7 +87,10 @@ Clusters:
       WebDAV:
         ExternalURL: "{{ collections_external_url }}"
         InternalURLs:
-          "{{ collections_internal_url1 }}": {}
+          "http://localhost:9002": {}
+      Keepbalance:
+        InternalURLs:
+          "http://arvados-keep.{{ cluster_id }}.{{ internal_domain }}:9005/": {}
       Websocket:
         InternalURLs:
           "{{ ws_internal_url }}": {}

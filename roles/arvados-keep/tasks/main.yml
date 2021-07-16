@@ -1,3 +1,30 @@
+- name: "Install nginx on keepproxy host"
+  apt:
+    name: "nginx"
+    state: present
+
+- name: "Install Ruby on keepproxy host"
+  apt:
+    name: "ruby"
+    state: present
+
+- name: "Install Ruby dev package on keepproxy host"
+  apt:
+    name: "ruby-dev"
+    state: present
+
+- name: "Install Bundler on keepproxy host"
+  apt:
+    name: "bundler"
+    state: present
+
+- name: "Remove default nginx config"
+  ansible.builtin.file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+
+
 - name: "Install Keepproxy"
   apt:
     name: "keepproxy"
