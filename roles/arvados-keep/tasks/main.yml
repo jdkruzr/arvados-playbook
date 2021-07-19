@@ -23,14 +23,22 @@
     path: /etc/nginx/sites-enabled/default
     state: absent
 
+- name: "Install keepproxy nginx config"
+  template:
+    dest: /etc/nginx/conf.d/arvados_keepproxy.conf.j2
+    src: arvados_keepproxy.conf.j2
 
+- name: "Install keep-web nginx config"
+  template:
+    dest: /etc/nginx/conf.d/arvados_keepweb.conf.j2
+    src: arvados_keepweb.conf.j2
 
 - name: "Install Keepproxy"
   apt:
     name: "keepproxy"
     state: present
 
-- name: "Enable and start Keepproxy"
+- name: "Enable and restart Keepproxy"
   ansible.builtin.systemd:
     name: 'keepproxy'
     enabled: yes
@@ -41,7 +49,7 @@
     name: "keep-web"
     state: present
 
-- name: "Enable and start Keep-web"
+- name: "Enable and restart Keep-web"
   ansible.builtin.systemd:
     name: 'keep-web'
     enabled: yes
