@@ -23,7 +23,7 @@ auto_admin_user: "jtd@broken.wrx"
 # If you use another LDAP, you may need to change such things as the
 # search attribute.
 
-ldap_server: "ldap://pegasus.broken.wrx:389"
+ldap_server: "ldap://pacifica.broken.wrx:389"
 ldap_search_attribute: "sAMAccountName"
 ldap_search_bind_user: "CN=arvados,CN=Users,DC=broken,DC=wrx"
 ldap_search_bind_password: "letsdosomescience1!"
