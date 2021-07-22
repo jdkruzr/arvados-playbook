@@ -1,5 +1,5 @@
 upstream keepproxy {
-  server                127.0.0.1:25107;
+  server                arvados-keep.{{ internal_domain }}:25107;
 }
 
 server {
