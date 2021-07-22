@@ -4,15 +4,15 @@ upstream keep-web {
 
 server {
   listen                80;
-  server_name           download.{{ cluster_id }}.{{ internal_domain }}
-                        collections.{{ cluster_id }}.{{ internal_domain }}
-                        *.collections.{{ cluster_id }}.{{ internal_domain }}
-                        ~.*--collections.{{ cluster_id }}.{{ internal_domain }};
+  server_name           download.{{ cluster_id }}.{{ external_domain }}
+                        collections.{{ cluster_id }}.{{ external_domain }}
+                        *.collections.{{ cluster_id }}.{{ external_domain }}
+                        ~.*--collections.{{ cluster_id }}.{{ external_domain }};
 
   proxy_connect_timeout 90s;
   proxy_read_timeout    300s;
 
-  ssl                   on;
+  #ssl                   on;
   #ssl_certificate       /YOUR/PATH/TO/cert.pem;
   #ssl_certificate_key   /YOUR/PATH/TO/cert.key;
 
