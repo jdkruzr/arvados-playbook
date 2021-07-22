@@ -4,6 +4,7 @@ Clusters:
     ManagementToken: "{{ management_token }}"
     Collections:
       BlobSigningKey: "{{ blob_signing_key }}"
+      DefaultReplication: 1
     PostgreSQL:
       Connection:
         host: "{{ postgres_host }}"
@@ -90,7 +91,7 @@ Clusters:
           "http://localhost:9002": {}
       Keepbalance:
         InternalURLs:
-          "http://arvados-keep.{{ cluster_id }}.{{ internal_domain }}:9005/": {}
+          "http://arvados-keep.{{ internal_domain }}:9005/": {}
       Websocket:
         InternalURLs:
           "{{ ws_internal_url }}": {}
@@ -155,6 +156,7 @@ Clusters:
     Volumes:
       {{ cluster_id }}-nyw5e-000000000000000:
         Driver: Directory
+        Replication: 1
         DriverParameters:
           # The directory that will be used as the backing store.
           Root: "{{ keep_directory }}"
