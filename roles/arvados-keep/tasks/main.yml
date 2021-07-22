@@ -25,12 +25,12 @@
 
 - name: "Install keepproxy nginx config"
   template:
-    dest: /etc/nginx/conf.d/arvados_keepproxy.conf.j2
+    dest: /etc/nginx/conf.d/arvados_keepproxy.conf
     src: arvados_keepproxy.conf.j2
 
 - name: "Install keep-web nginx config"
   template:
-    dest: /etc/nginx/conf.d/arvados_keepweb.conf.j2
+    dest: /etc/nginx/conf.d/arvados_keepweb.conf
     src: arvados_keepweb.conf.j2
 
 - name: "Install Keepproxy"
