@@ -144,7 +144,7 @@
 
 - name: "Enable and start Docker cleaner"
   systemd:
-    name: docker-cleaner
+    name: arvados-docker-cleaner
     enabled: yes
     state: restarted
 
