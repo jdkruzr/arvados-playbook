@@ -9,7 +9,7 @@
     dest: /etc/arvados/crunch-dispatch-local-credentials
     mode: 0644
 
-- name: "Install Arvados tools"
+- name: "Install Arvados tools (including packages from cloud image described in https://github.com/arvados/arvados/blob/main/tools/compute-images/scripts/base.sh"
   apt:
     pkg:
       - curl
@@ -17,13 +17,78 @@
       - build-essential
       - libcurl4-openssl-dev
       - python3-arvados-python-client
+      - crunch-run
+      - arvados-docker-cleaner
+      - docker.io
       - ruby
       - ruby-dev
       - bundler
       - python3-arvados-cwl-runner
-      - python-arvados-fuse
+      - python3-arvados-fuse
+      - openssh-server
+      - apt-utils
+      - curl
+      - libcurl3-gnutls
+      - libcurl4-openssl-dev
+      - lvm2
+      - cryptsetup
+      - xfsprogs
     state: present
     update_cache: true
+
+- name: "Remove unattended-upgrades"
+  apt:
+    name: unattended-upgrades
+    purge: yes
+    state: absent
+
+- name: "Create Docker cleaner dir"
+  file:
+    path: /etc/arvados/docker-cleaner
+    state: directory
+    mode: '0755'
+
+- name: "Create Docker cleaner config file"
+  copy:
+    dest: /etc/arvados/docker-cleaner/docker-cleaner.json
+    content: |
+      Quota: 10G
+      RemoveStoppedContainers: always
+
+- name: "Enable cgroup accounting"
+  command: sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0"/g' /etc/default/grub
+
+- name: "Edit systemd unit file for Docker"
+  command: sed "s/ExecStart=\(.*\)/ExecStart=\1 --default-ulimit nofile=10000:10000" /lib/systemd/system/docker.service > /etc/systemd/system/docker.service
+
+- name: "Set user_allow_other for FUSE"
+  command: sed -i 's/#user_allow_other/user_allow_other/g' /etc/fuse.conf
+
+- name: "Add Crunch user"
+  user:
+    name: crunch
+    password: '*'
+
+- name: "Make Crunch user able to sudo with no password"
+  copy:
+    dest: /etc/sudoers.d/91-crunch
+    content: |
+      crunch ALL=(ALL) NOPASSWD:ALL
+      
+- name: "Update grub"
+  command: update-grub
+
+- name: "Enable and start Docker"
+  systemd:
+    name: docker
+    enabled: yes
+    state: restarted
+
+- name: "Enable and start Docker cleaner"
+  systemd:
+    name: docker-cleaner
+    enabled: yes
+    state: restarted
 
 - name: "Enable and start Crunch Local"
   ansible.builtin.systemd:
