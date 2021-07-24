@@ -23,6 +23,31 @@
 - name: Install Ruby utils
   command: gem install arvados-cli
 
+- name: "Create /etc/defaults"
+  file:
+    path: /etc/defaults
+    state: directory
+
+- name: "Install shellinabox"
+  apt:
+    name: "shellinabox"
+    state: present
+
+  - name: "Install shellinabox config"
+  template:
+    src: shellinabox.j2
+    dest: /etc/defaults/shellinabox
+
+- name: "Install shellinabox PAM config file"
+  template:
+    src: shellinabox.pam.j2
+    dest: /etc/pam.d/shellinabox
+
+- name: "Install PAM module for Arvados"
+  apt:
+    name: "libpam-arvados-go"
+    state: present
+
 # This should return the UUID of the VM ID in arv_output.stdout
 - name: Setup VM entry
   command: arv --format=uuid virtual_machine create --virtual-machine '{"hostname":"arvados-shell.{{ internal_domain }}"}'
@@ -39,3 +64,8 @@
   ansible.builtin.template:
       src: "arvados-login-sync.j2"
       dest: "/etc/cron.d/arvados-login-sync"
+
+- name: Enable and restart shellinabox
+  systemd:
+    name: shellinabox
+    state: restarted

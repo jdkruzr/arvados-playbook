@@ -66,21 +66,6 @@
     src: arvados-webshell.conf.j2
     dest: "/etc/nginx/conf.d/arvados-webshell.conf"
 
-- name: "Create /etc/defaults"
-  file:
-    path: /etc/defaults
-    state: directory
-    
-- name: "Install shellinabox config"
-  template:
-    src: shellinabox.j2
-    dest: /etc/defaults/shellinabox
-
-- name: "Install shellinabox PAM config file"
-  template:
-    src: shellinabox.pam.j2
-    dest: /etc/pam.d/shellinabox
-
 - name: "Install postgresql-client"
   apt:
     name: "postgresql-client"
@@ -94,16 +79,6 @@
 - name: "Install Composer"
   apt:
     name: "arvados-composer"
-    state: present
-
-- name: "Install shellinabox"
-  apt:
-    name: "shellinabox"
-    state: present
-
-- name: "Install PAM module for Arvados"
-  apt:
-    name: "libpam-arvados-go"
     state: present
 
 - name: "Restart nginx"
