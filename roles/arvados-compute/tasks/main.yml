@@ -9,7 +9,7 @@
     dest: /etc/arvados/crunch-dispatch-local-credentials
     mode: 0644
 
-- name: "Install Arvados tools (including packages from cloud image described in https://github.com/arvados/arvados/blob/main/tools/compute-images/scripts/base.sh"
+- name: "Install Arvados tools (including packages from cloud image described in https://github.com/arvados/arvados/blob/main/tools/compute-images/scripts/base.sh)"
   apt:
     pkg:
       - curl
@@ -59,7 +59,7 @@
   command: sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0"/g' /etc/default/grub
 
 - name: "Edit systemd unit file for Docker"
-  command: sed "s/ExecStart=\(.*\)/ExecStart=\1 --default-ulimit nofile=10000:10000" /lib/systemd/system/docker.service > /etc/systemd/system/docker.service
+  command: sed "s/ExecStart=\(.*\)/ExecStart=\1 --default-ulimit nofile=10000:10000/" /lib/systemd/system/docker.service > /etc/systemd/system/docker.service
 
 - name: "Set user_allow_other for FUSE"
   command: sed -i 's/#user_allow_other/user_allow_other/g' /etc/fuse.conf
@@ -74,7 +74,7 @@
     dest: /etc/sudoers.d/91-crunch
     content: |
       crunch ALL=(ALL) NOPASSWD:ALL
-      
+
 - name: "Update grub"
   command: update-grub
 
