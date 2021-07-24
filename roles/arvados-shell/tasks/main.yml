@@ -34,9 +34,9 @@
     state: present
 
   - name: "Install shellinabox config"
-  template:
-    src: shellinabox.j2
-    dest: /etc/defaults/shellinabox
+    template:
+      src: shellinabox.j2
+      dest: /etc/defaults/shellinabox
 
 - name: "Install shellinabox PAM config file"
   template:
