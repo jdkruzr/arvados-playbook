@@ -9,6 +9,22 @@
     dest: /etc/arvados/crunch-dispatch-local-credentials
     mode: 0644
 
+- name: "Install Arvados tools"
+  apt:
+    pkg:
+      - curl
+      - git
+      - build-essential
+      - libcurl4-openssl-dev
+      - python3-arvados-python-client
+      - ruby
+      - ruby-dev
+      - bundler
+      - python3-arvados-cwl-runner
+      - python-arvados-fuse
+    state: present
+    update_cache: true
+
 - name: "Enable and start Crunch Local"
   ansible.builtin.systemd:
     name: 'crunch-dispatch-local'

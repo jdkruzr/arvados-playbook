@@ -3,6 +3,7 @@
     pkg:
       - curl
       - build-essential
+      - git
       - libcurl4-openssl-dev
       - python3-arvados-python-client
       - ruby
