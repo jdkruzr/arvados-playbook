@@ -5,7 +5,7 @@ upstream arvados-webshell {
 # This config file has been changed to serve plain http instead of https since we
 # terminate TLS on a proxy machine at the border.
 server {
-  listen                80;
+  listen                80 http2;
   server_name           webshell.{{ cluster_id }}.{{ external_domain }};
 
   proxy_connect_timeout 90s;
@@ -37,11 +37,15 @@ server {
     }
 
     proxy_ssl_session_reuse off;
+    proxy_ssl_verify              off;
     proxy_read_timeout  90;
     proxy_set_header    X-Forwarded-Proto https;
     proxy_set_header    Host $http_host;
     proxy_set_header    X-Real-IP $remote_addr;
     proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_pass          http://arvados-webshell;
+
+    access_log /var/log/nginx/webshell.{{ cluster_id }}.{{ external_domain }}.access.log combined;
+    error_log /var/log/nginx/webshell.{{ cluster_id }}.{{ external_domain }}.error.log;
   }
 }

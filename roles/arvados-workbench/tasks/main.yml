@@ -57,7 +57,7 @@
         }
 
         location /composer/composer.yml {
-          return 200 '{ "API_HOST": "bwarv.broken.wrx" }';
+          return 200 '{ "API_HOST": "bwarv.broken.works" }';
         }
       }
 
