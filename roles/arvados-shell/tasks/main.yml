@@ -23,20 +23,10 @@
 - name: Install Ruby utils
   command: gem install arvados-cli
 
-- name: "Create /etc/defaults"
-  file:
-    path: /etc/defaults
-    state: directory
-
-- name: "Install shellinabox"
-  apt:
-    name: "shellinabox"
-    state: present
-
 - name: "Install shellinabox config"
   template:
     src: shellinabox.j2
-    dest: /etc/defaults/shellinabox
+    dest: /etc/default/shellinabox
 
 - name: "Install shellinabox PAM config file"
   template:
