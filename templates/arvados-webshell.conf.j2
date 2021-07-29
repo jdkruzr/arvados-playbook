@@ -15,7 +15,7 @@ server {
   # ssl_certificate       /YOUR/PATH/TO/cert.pem;
   # ssl_certificate_key   /YOUR/PATH/TO/cert.key;
 
-  location /shell.{{ cluster_id }}.{{ external_domain }} {
+  location /arvados-shell.{{ internal_domain }} {
     if ($request_method = 'OPTIONS') {
        add_header 'Access-Control-Allow-Origin' '*';
        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';

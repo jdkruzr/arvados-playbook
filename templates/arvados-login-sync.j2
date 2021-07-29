@@ -1,4 +1,5 @@
 ARVADOS_API_HOST="{{ controller_internal_address }}"
 ARVADOS_API_TOKEN="{{ system_root_token }}"
 ARVADOS_VIRTUAL_MACHINE_UUID="{{ arv_output.stdout }}"
+ARVADOS_API_HOST_INSECURE=true
 */2 * * * * root arvados-login-sync
