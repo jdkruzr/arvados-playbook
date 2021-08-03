@@ -94,8 +94,8 @@ Clusters:
           "http://arvados-keep.{{ internal_domain }}:9005/": {}
       Websocket:
         InternalURLs:
-          "{{ ws_internal_url }}": {}
-        ExternalURL: "{{ ws_external_url }}"
+          "http://arvados-ws.{{ internal_domain }}:8005": {}
+        ExternalURL: "wss://ws.{{ cluster_id }}.{{ external_domain }}"
       Workbench1:
         ExternalURL: "{{ workbench1_external_url }}"
       Workbench2:
