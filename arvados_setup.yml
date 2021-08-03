@@ -1,6 +1,6 @@
 ---
 
-# This playbook runs the setup process for Arvados on a total of eight hosts.
+# This playbook runs the setup process for Arvados on a total of seven hosts.
 
 - name: Update and upgrade packages
   hosts: arvados_hosts
@@ -117,7 +117,7 @@
   become: true
 
   roles:
-    - arvados-compute
+    - arvados-crunch
 
 - name: Install shell node
   hosts: arvados-shell 

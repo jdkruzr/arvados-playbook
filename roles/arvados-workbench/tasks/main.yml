@@ -81,6 +81,17 @@
     name: "arvados-composer"
     state: present
 
+- name: "Install Websocket Server"
+  apt:
+    name: "arvados-ws"
+    state: present
+
+- name: "Enable and start Websocket Server"
+  ansible.builtin.systemd:
+    name: 'arvados-ws'
+    enabled: yes
+    state: started
+
 - name: "Restart nginx"
   systemd:
     name: nginx

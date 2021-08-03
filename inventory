@@ -2,9 +2,7 @@
 arvados-api
 arvados-keep
 arvados-keep0
-arvados-ws
 arvados-workbench
-arvados-workbench2
 arvados-postgres
 arvados-crunch
 arvados-shell

@@ -1,6 +1,0 @@
----
-
-realm_domain: broken.wrx
-# It is important that krb5 domain is in ALL CAPITALS
-krb5_default_realm: BROKEN.WRX
-realm_ad_ou: CN=Computers,DC=broken,DC=wrx

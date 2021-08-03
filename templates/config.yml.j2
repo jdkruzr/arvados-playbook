@@ -68,25 +68,25 @@ Clusters:
       AnonymousUserToken: "{{ anonymous_user_token }}"
     Services:
       Controller:
-        ExternalURL: "{{ controller_external_url }}"
+        ExternalURL: "https://{{ cluster_id }}.{{ external_domain }}"
         InternalURLs:
-          "{{ controller_internal_url }}": {}
+          "http://arvados-api.{{ internal_domain }}:8003": {}
       RailsAPI:
       # Does not have an ExternalURL
         InternalURLs:
-          "{{ rails_internal_url }}": {}
+          "{{ internal_domain }}:8004": {}
       Keepstore:
         # No ExternalURL because they are only accessed by the internal subnet.
         InternalURLs:
-          "{{ keep_internal_url1 }}": {}
+          "http://arvados-keep0.{{ internal_domain }}:25107": {}
       Keepproxy:
-        ExternalURL: "{{ keepproxy_external_url }}"
+        ExternalURL: "https://keep.{{ cluster_id }}.{{ external_domain }}"
         InternalURLs:
-          "{{ keepproxy_internal_url1 }}": {}
+          "http://arvados-keep.{{ internal_domain }}": {}
       WebDAVDownload:
-        ExternalURL: "{{ download_external_url }}"
+        ExternalURL: "https://download.{{ cluster_id }}.{{ external_domain }}"
       WebDAV:
-        ExternalURL: "{{ collections_external_url }}"
+        ExternalURL: "https://*.collections.{{ cluster_id }}.{{ external_domain }}"
         InternalURLs:
           "http://localhost:9002": {}
       Keepbalance:
