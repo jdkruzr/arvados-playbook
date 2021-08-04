@@ -19,8 +19,7 @@ proxy_http_version 1.1;
 geo $external_client {
 default        1;
 127.0.0.0/24   0;
-192.168.9.0/24  0;
-129.114.3.115/32     0;
+{{ internal_subnet }}  0;
 }
 
 # This is the port where nginx expects to contact arvados-controller.
@@ -44,7 +43,7 @@ ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
 client_max_body_size 1024m;
 
 location / {
-    proxy_pass            http://192.168.9.80:8003;
+    proxy_pass            http://{{ controller_ip_address }}:8003;
     proxy_redirect        off;
     proxy_connect_timeout 90s;
     proxy_read_timeout    300s;

@@ -104,16 +104,16 @@ Clusters:
         InternalURLs:
           "http://arvados-api.{{ internal_domain }}:9006": {}
       GitSSH:
-        ExternalURL: "{{ ssh_git_external_url }}"
+        ExternalURL: "ssh://git@git.{{ cluster_id }}.{{ external_domain }}"
       GitHTTP:
-        ExternalURL: "{{ http_git_external_url }}"
+        ExternalURL: "https://git.{{ cluster_id }}.{{ external_domain }}"
         InternalURLs:
-          "{{ http_git_internal_url }}": {}
+          "http://arvados-api.{{ internal_domain }}:9001/": {}
       Composer:
-        ExternalURL: "{{ composer_external_url }}"
+        ExternalURL: "https://workbench.{{ cluster_id }}.{{ external_domain }}/composer/"
       WebShell:
         InternalURLs: {}
-        ExternalURL: "{{ webshell_external_url }}"
+        ExternalURL: "https://webshell.{{ cluster_id }}.{{ external_domain }}"
     Git:
       GitCommand: /var/lib/arvados/git/gitolite/src/gitolite-shell
       GitoliteHome: /var/lib/arvados/git
