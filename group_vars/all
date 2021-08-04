@@ -31,25 +31,13 @@ ldap_search_base: "CN=Users,DC=broken,DC=wrx"
 ldap_username_attribute: "sAMAccountName"
 
 controller_internal_address: "arvados-api.broken.wrx"
-keep_internal_url1: "http://arvados-keep0.broken.wrx:25107/"
-# keep_internal_url2: "http://arvados-keep1.broken.wrx:25107/"
-keep_directory: "/mnt/filesystem"
-keepproxy_external_url: "https://keep.bwarv.broken.works/"
-keepproxy_internal_url1: "http://arvados-keep.broken.wrx:25107/"
-download_external_url: "https://download.bwarv.broken.works/"
-collections_external_url: "https://*.collections.bwarv.broken.works/"
-collections_internal_url1: "http://arvados-keep.broken.wrx:9002/"
-# collections_internal_url2: "http://arvados-keep1.broken.wrx:9002"
-ws_internal_url: "http://arvados-ws.broken.wrx:8005/"
-ws_external_url: "wss://ws.bwarv.broken.works/websocket"
-workbench1_external_url: "https://workbench.bwarv.broken.works/"
-workbench2_external_url: "https://workbench2.bwarv.broken.works/"
-ssh_git_external_url: "ssh://git@git.bwarv.broken.works"
-http_git_external_url: "https://git.bwarv.broken.works/"
-http_git_internal_url: "http://arvados-api.broken.wrx:9001/"
-composer_external_url: "https://workbench.bwarv.broken.works/composer/"
-webshell_external_url: "https://webshell.bwarv.broken.works/"
-dispatch_cloud_internal_url: "http://arvados-api.broken.wrx:9006/"
+
+# Used to tell nginx to treat your traffic as internal if coming from inside your cluster network.
+internal_subnet: "192.168.9.0/24"
+
+# Used for a special-case nginx config setting.
+controller_ip_address: "192.168.9.80"
+
 cloud_image_id: "used_for_AWS_not_implemented_yet"
 cloud_access_key_id: "used_for_AWS_not_implemented_yet"
 cloud_secret_key: "used_for_AWS_not_implemented_yet"
