@@ -97,12 +97,12 @@ Clusters:
           "http://arvados-ws.{{ internal_domain }}:8005": {}
         ExternalURL: "wss://ws.{{ cluster_id }}.{{ external_domain }}"
       Workbench1:
-        ExternalURL: "{{ workbench1_external_url }}"
+        ExternalURL: "https://workbench.{{ cluster_id }}.{{ external_domain }}"
       Workbench2:
-        ExternalURL: "{{ workbench2_external_url }}"
+        ExternalURL: "https://workbench2.{{ cluster_id }}.{{ external_domain }}"
       DispatchCloud:
         InternalURLs:
-          "{{ dispatch_cloud_internal_url }}": {}
+          "http://arvados-api.{{ internal_domain }}:9006": {}
       GitSSH:
         ExternalURL: "{{ ssh_git_external_url }}"
       GitHTTP:
