@@ -1,0 +1,89 @@
+# We've provided DNS addresses as reverse-proxy targets for Caddy.
+# Note that if these do not resolve when Caddy starts up, it will
+# quit without attempting to continue. You can also change these
+# to IP addresses if for some reason your reverse-proxy server
+# will not be able to resolve internal DNS.
+#
+# In this example, "arvid" is the five-letter cluster ID of
+# your Arvados cluster and "domain.tld" is your external domain.
+# You will also provide these in the "all" variables file in the
+# group_vars directory of this repository.
+
+# Refer to the Caddy docs for more information:
+# https://caddyserver.com/docs/caddyfile
+}
+
+# We use tls_insecure_skip_verify here because we run
+# the API server nginx instance with a snakeoil cert.
+# Certain applications expect it to speak https, so
+# we let it. The Git repository lives on the API host
+# as well.
+
+arvid.domain.tld {
+  reverse_proxy * arvados-api:443 {
+    transport http {
+      tls_insecure_skip_verify
+    }
+  }
+}
+
+git.arvid.domain.tld {
+  reverse_proxy * arvados-api:9001
+}
+
+# keep.*, collections.*, *.collections.*, and download.*
+# all refer to services running on our keep-proxy host.
+# That host itself runs another reverse-proxy (nginx) to handle
+# divvying up incoming requests for different services.
+
+keep.arvid.domain.tld {
+  reverse_proxy * arvados-keep:80
+}
+
+download.arvid.domain.tld {
+  reverse_proxy * arvados-keep:80
+}
+
+# We have used "dns route53" here to permit Caddy to obtain
+# and renew certificates using AWS's API method for
+# wildcards. The best way to configure the "collections"
+$ url is with wildcard certs, so we've defaulted to that here.
+
+collections.arvid.domain.tld {
+  reverse_proxy * arvados-keep:80
+  tls {
+    dns route53 {
+      max_retries 10
+      aws_profile "wildcard-user"
+    }
+  }
+}
+
+*.collections.arvid.domain.tld {
+  reverse_proxy * arvados-keep:80
+  tls {
+    dns route53 {
+      max_retries 10
+      aws_profile "wildcard-user"
+    }
+  }
+}
+
+# ws.*, workbench.*, workbench2.* and webshell*
+# all live on the workbench host.
+
+ws.arvid.domain.tld {
+  reverse_proxy * arvados-workbench:8005
+}
+
+workbench.arvid.domain.tld {
+  reverse_proxy * arvados-workbench:80
+}
+
+workbench2.arvid.domain.tld {
+  reverse_proxy * arvados-workbench:80
+}
+
+webshell.arvid.domain.tld {
+  reverse_proxy * arvados-workbench:80
+}

@@ -36,7 +36,7 @@
     group: www-data
     state: link
 
-- name: "Add Arvados nginx config file"
+- name: "Add Arvados Workbench nginx config file"
   copy:
     dest: "/etc/nginx/conf.d/workbench.conf"
     content: |
@@ -61,6 +61,11 @@
         }
       }
 
+- name: "Add Arvados Workbench2 nginx config file"
+  template:
+    dest: "/etc/nginx/conf.d/arvados-workbench2.conf"
+    src: arvados-workbench2.conf.j2
+
 - name: "Install Webshell config file"
   template:
     src: arvados-webshell.conf.j2
@@ -74,6 +79,11 @@
 - name: "Install Workbench"
   apt:
     name: "arvados-workbench"
+    state: present
+
+- name: "Install Workbench2"
+  apt:
+    name: "arvados-workbench2"
     state: present
 
 - name: "Install Composer"

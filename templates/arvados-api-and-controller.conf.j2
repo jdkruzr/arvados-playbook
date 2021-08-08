@@ -26,7 +26,6 @@ default        1;
 upstream controller {
 server     localhost:8003  fail_timeout=10s;
 }
-# ^-- This doesn't appear to have ever worked as designed? Like nginx had no idea what "controller" was.
 
 server {
 # This configures the public https port that clients will actually connect to,

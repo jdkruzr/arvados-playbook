@@ -1,0 +1,20 @@
+server {
+
+listen       80;
+server_name  workbench2.{{ cluster_id }}.{{ external_domain }};
+
+index  index.html;
+
+location /config.json {
+    return 200 '{ "API_HOST": "{{ cluster_id }}.{{ external_domain }}" }';
+}
+
+location / {
+    root      /var/www/arvados-workbench2/workbench2;
+    index     index.html;
+    try_files $uri $uri/ /index.html;
+    if (-f $document_root/maintenance.html) {
+    return 503;
+    }
+}
+}

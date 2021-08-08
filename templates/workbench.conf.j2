@@ -1,0 +1,20 @@
+server {
+listen       80;
+server_name  workbench.{{ cluster_id }}.{{ external_domain }};
+
+root /var/www/arvados-workbench/current/public;
+index  index.html;
+
+passenger_enabled on;
+
+client_max_body_size 1024m;
+
+location /composer {
+    root   /var/www/arvados-composer;
+    index  index.html;
+}
+
+location /composer/composer.yml {
+    return 200 '{ "API_HOST": "{{ cluster_id }}.{{ external_domain }}" }';
+}
+}
