@@ -4,7 +4,13 @@ Installs the latest version of Arvados on seven Ubuntu-based hosts.
 # Introduction
 [Arvados](https://www.arvados.org/) is a federated data management and CWL workflow processing platform developed by [Curii](https://www.curii.com/). It was originally developed to support biomedical scientific environments, but its scope has since expanded to include data and workflow execution more generally, leading it to be deployed in a wide range of applications.
 
-At BioTeam, we find Arvados interesting because it fills several important needs we've found that crop up again and again at our clients.
+At BioTeam, we find Arvados interesting because it helps fill several important needs we've found that crop up again and again at our clients:
+* Tracking metadata and data provenance
+* Ensuring you never "lose track" of data thanks to content addressing
+* Relative ease of presentation of results from workflows
+* Built-in tiering and archiving
+* Handling user/group permissions and ownership between different authentication schemes (LDAP, OIDC, etc.) consistently, assisting in data sharing
+* Federation and cross-instance workflow execution between labs or between organizations
 
 # Assumptions
 * You are using Ubuntu 18.04. This playbook should work with Ubuntu 20.04, but you may encounter some strange issues with things related to Python or other application environments. (For example, you may have to change the Python version in roles/config/main.yml from 3.6 to 3.8. Similar issues may crop up with Ruby.)
