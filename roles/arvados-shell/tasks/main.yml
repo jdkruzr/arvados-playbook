@@ -12,6 +12,7 @@
       - python3-arvados-cwl-runner
       - python-arvados-fuse
       - docker.io
+      - libssl-dev
     state: present
     update_cache: true
 

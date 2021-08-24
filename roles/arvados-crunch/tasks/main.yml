@@ -122,6 +122,12 @@
     content: |
       user_allow_other
 
+- name: "Set user_allow_other for FUSE"
+  copy:
+    dest: /etc/fuse.conf
+    content: |
+      user_allow_other
+
 - name: "Add Crunch user"
   user:
     name: crunch
