@@ -1,21 +1,21 @@
 # You select your own cluster ID. It will be used as part of your external addresses 
 # for Arvados services and also as a "uniquifier" for identifiers for your cluster
 # such that if you federate it with another it's obvious which cluster your resources belong to.
-cluster_id: "bwarv"
-external_domain: "broken.works"
-internal_domain: "broken.wrx"
+cluster_id: "abc99"
+external_domain: "domain.tld"
+internal_domain: "domain.tld"
 
 # Each of these keys and tokens should be 32 characters or greater. You can generate these on
 # Linux with the following command: tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo ''
-system_root_token: "h2qzWmgPOgGy9nLnhlfJQo52rwI9BMP6"
-management_token: "ffx8StusQO4qlR3xUCesnLURgaBOFJUH"
-blob_signing_key: "JeeNMSywpFtq8spPErASfk4I93dtndSQ"
-workbench_secret_key: "JeeNMSywpFtq8spPErASfk4I93dtndSQ"
-anonymous_user_token: "hk24SYd8OIhttBse9DvXjfrqPJj0UNnV"
+system_root_token: "32characters"
+management_token: "32characters"
+blob_signing_key: "32characters"
+workbench_secret_key: "32characters"
+anonymous_user_token: "32characters"
 
 postgres_host: "arvados-postgres"
 postgres_user: "arvados"
-postgres_password: "idontreallycaredou"
+postgres_password: "myarvadosdbpassword"
 postgres_database_name: "arvados_production"
 
 # Google Auth is not implemented yet in this playbook.
@@ -24,20 +24,20 @@ google_client_id: "asdfjklsdjfhaklsdfhjk"
 google_client_secret: "shjdfjksdfhjksdhf"
 
 # Whatever user attempts to log in and has this email attribute will be made admin.
-auto_admin_user: "jtd@broken.wrx"
+auto_admin_user: "user@domain"
 
 # This configuration is for LDAP in the form of Microsoft Active Directory.
 # If you use another LDAP, you may need to change such things as the
 # search attribute.
 
-ldap_server: "ldap://pacifica.broken.wrx:389"
+ldap_server: "ldap://host.domain.tld:389"
 ldap_search_attribute: "sAMAccountName"
-ldap_search_bind_user: "CN=arvados,CN=Users,DC=broken,DC=wrx"
+ldap_search_bind_user: "CN=arvados,CN=Users,DC=domain,DC=tld"
 ldap_search_bind_password: "letsdosomescience1!"
-ldap_search_base: "CN=Users,DC=broken,DC=wrx"
+ldap_search_base: "CN=Users,DC=domain,DC=tld"
 ldap_username_attribute: "sAMAccountName"
 
-controller_internal_address: "arvados-api.broken.wrx"
+controller_internal_address: "arvados-api.domain.tld"
 
 # Used to tell nginx to treat your traffic as internal if coming from inside your cluster network.
 internal_subnet: "192.168.9.0/24"
